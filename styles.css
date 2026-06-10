@@ -107,6 +107,10 @@ img { max-width: 100%; display: block; }
 .price { font-family: "Fraunces", serif; font-size: 42px; font-weight: 600; margin: 8px 0 0; }
 .price span { font-size: 17px; color: var(--muted); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 500; }
 .price-alt { color: var(--turmeric-deep); font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.price-was { font-size: 24px; color: var(--muted); font-weight: 500; margin-right: 2px; }
+.price-was-alt { color: var(--muted); font-weight: 500; }
+.price-note { display: inline-block; background: #FBEFD6; border: 1px solid #F0D79B; color: var(--turmeric-deep);
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-bottom: 4px; }
 .plan ul { list-style: none; padding: 0; margin: 18px 0 22px; }
 .plan li { padding-left: 26px; position: relative; margin: 9px 0; font-size: 15px; }
 .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
