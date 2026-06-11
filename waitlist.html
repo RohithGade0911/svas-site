@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the Svas waitlist — early access</title>
+<meta name="description" content="Get early access to Svas — regional Indian meal plans with dietitian-reviewed, IFCT-2017 macros. Join the waitlist with your name and email.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#2D6A2F">
+<link rel="icon" href="assets/Favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="/">
+    <img class="mark-img" src="assets/mark-green.svg" alt=""><b>Svas</b>
+  </a>
+</header>
+
+<div class="wl-blob t"></div>
+<div class="wl-blob g"></div>
+
+<main class="wl-main">
+  <div class="wl-card reveal in">
+    <div id="wl-form-pane">
+      <span class="kicker">Early access</span>
+      <h1>Be first to taste Svas.</h1>
+      <p class="lede">We're opening Svas in waves so every region gets the attention it deserves.
+        Leave your name and email — we'll send your invite as early access rolls out.</p>
+
+      <ul class="wl-perks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15"/><path d="M4.5 12c0 4.3 3.2 7 7.5 7s7.5-2.7 7.5-7"/><path d="M9.8 8.5c-.7-1.1.7-1.7 0-3.2"/><path d="M14.2 8.5c-.7-1.1.7-1.7 0-3.2"/></svg>
+          1,000+ regional dishes across 28 states, with native names</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="4.2"/></svg>
+          Macros computed from IFCT-2017, reviewed by dietitians</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          Free to join — early members get the launch offer locked in</li>
+      </ul>
+
+      <form class="wl-form" id="wl-form" novalidate>
+        <div class="wl-field">
+          <label for="wl-name">Your name</label>
+          <input id="wl-name" name="name" type="text" autocomplete="name" maxlength="120" placeholder="e.g. Ananya" required>
+        </div>
+        <div class="wl-field">
+          <label for="wl-email">Email</label>
+          <input id="wl-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+        </div>
+        <p class="wl-err" id="wl-err"></p>
+        <button class="btn btn-primary btn-block" id="wl-submit" type="submit">Join the waitlist</button>
+      </form>
+      <p class="wl-micro">No spam — only your invite and the occasional launch update.</p>
+    </div>
+
+    <div class="wl-success" id="wl-success">
+      <div class="tick">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h2 id="wl-success-title">You're on the list.</h2>
+      <p id="wl-success-body">We'll email your invite as early access rolls out. Meanwhile, tell a friend
+        who still thinks dal makhani can't fit a diet.</p>
+      <a class="wl-back" href="/">‹ Back to svas.life</a>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var SUPABASE_URL = "https://jtschfacrjsynryiyyyk.supabase.co";
+  var KEY = "sb_publishable_2uL2zVf_cpObToPtKODMZw_cH0c8TIe"; // publishable — safe in the client
+  var form = document.getElementById("wl-form");
+  var err = document.getElementById("wl-err");
+  var btn = document.getElementById("wl-submit");
+
+  function showSuccess(already) {
+    document.getElementById("wl-form-pane").style.display = "none";
+    if (already) {
+      document.getElementById("wl-success-title").textContent = "You're already on the list.";
+      document.getElementById("wl-success-body").textContent =
+        "We've got you — your invite will land in this inbox as early access rolls out.";
+    }
+    document.getElementById("wl-success").classList.add("show");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.classList.remove("show");
+    var name = document.getElementById("wl-name").value.trim();
+    var email = document.getElementById("wl-email").value.trim().toLowerCase();
+    if (!name) { err.textContent = "Please tell us your name."; err.classList.add("show"); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      err.textContent = "That email doesn't look right — mind checking it?"; err.classList.add("show"); return;
+    }
+    btn.disabled = true; btn.textContent = "Joining…";
+    fetch(SUPABASE_URL + "/rest/v1/waitlist", {
+      method: "POST",
+      headers: {
+        "apikey": KEY,
+        "Authorization": "Bearer " + KEY,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({ name: name, email: email, source: "site" })
+    }).then(function (res) {
+      if (res.status === 201) return showSuccess(false);
+      if (res.status === 409) return showSuccess(true);
+      throw new Error("HTTP " + res.status);
+    }).catch(function () {
+      err.textContent = "Something went wrong on our side — please try again in a moment.";
+      err.classList.add("show");
+      btn.disabled = false; btn.textContent = "Join the waitlist";
+    });
+  });
+})();
+</script>
+</body>
+</html>

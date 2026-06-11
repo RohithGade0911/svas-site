@@ -6,6 +6,12 @@
   --bg: #FAFAF5; --canvas: #F2EFE6; --card: #FFFFFF;
   --text: #3D2B1F; --muted: #6B5A4D; --border: #EAE3D5;
   --maxw: 1080px;
+  /* premium system tokens — match the app (theme.ts) */
+  --r-sm: 12px; --r-md: 16px; --r-lg: 24px;
+  --m-fast: .15s; --m-med: .25s; --m-slow: .35s;
+  --ease: cubic-bezier(.22, .9, .3, 1);
+  --shadow-raised: 0 6px 14px rgba(42,28,16,.10);
+  --shadow-glass: 0 14px 26px rgba(42,28,16,.14);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -18,11 +24,13 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; letter-spacing: -0.5px; li
 a { color: var(--green); text-decoration: none; }
 img { max-width: 100%; display: block; }
 
-/* Buttons */
+/* Buttons — hover lifts, press scales to .97 (same motion language as the app) */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   font-weight: 600; font-size: 15.5px; padding: 13px 22px; border-radius: 999px;
-  border: 1.5px solid transparent; cursor: pointer; transition: transform .12s ease, box-shadow .12s ease, background .12s ease; }
+  border: 1.5px solid transparent; cursor: pointer;
+  transition: transform var(--m-fast) var(--ease), box-shadow var(--m-fast) var(--ease), background var(--m-fast) var(--ease); }
 .btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(.97); }
 .btn-primary { background: var(--green); color: #fff; box-shadow: 0 6px 18px rgba(45,106,47,.22); }
 .btn-primary:hover { background: var(--green-dark); }
 .btn-ghost { background: transparent; color: var(--green); border-color: rgba(45,106,47,.35); }
@@ -31,10 +39,11 @@ img { max-width: 100%; display: block; }
 .btn-sm { padding: 9px 16px; font-size: 14px; }
 .btn-block { width: 100%; }
 
-/* Brand mark */
+/* Brand mark — the real house-bowl mark (Logo/svas-brand) */
 .mark { width: 30px; height: 30px; border-radius: 8px; background: var(--green); color: #fff;
   display: inline-flex; align-items: center; justify-content: center;
   font-family: "Fraunces", serif; font-weight: 600; font-size: 16px; flex: none; }
+.mark-img { width: 34px; height: 34px; flex: none; display: block; }
 
 /* Nav */
 .nav { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 18px;
@@ -80,11 +89,15 @@ img { max-width: 100%; display: block; }
 .sec-title { font-size: 34px; font-weight: 600; text-align: center; }
 .sec-sub { text-align: center; color: var(--muted); font-size: 17px; max-width: 52ch; margin: 14px auto 0; }
 
-/* Cards */
+/* Cards — Svas outline icons in soft tiles, gentle hover lift */
 .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 38px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px; }
-.card .ico { font-size: 28px; }
-.card b { display: block; font-family: "Fraunces", serif; font-size: 19px; margin: 12px 0 6px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 26px 22px;
+  transition: transform var(--m-med) var(--ease), box-shadow var(--m-med) var(--ease); }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-raised); }
+.card .ico { width: 52px; height: 52px; border-radius: 999px; background: var(--green-soft);
+  display: flex; align-items: center; justify-content: center; color: var(--green); }
+.card .ico svg { width: 26px; height: 26px; }
+.card b { display: block; font-family: "Fraunces", serif; font-size: 19px; margin: 14px 0 6px; }
 .card p { color: var(--muted); font-size: 15px; margin: 0; }
 
 /* Steps */
@@ -125,6 +138,7 @@ img { max-width: 100%; display: block; }
 .foot-top { max-width: var(--maxw); margin: 0 auto; display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 30px; }
 .foot-brand .mark { background: var(--turmeric); color: #15321A; }
+.foot-mark { display: inline-block; vertical-align: middle; }
 .foot-brand { display: block; }
 .foot-brand b { font-family: "Fraunces", serif; font-size: 20px; color: #fff; margin-left: 8px; }
 .foot-brand p { margin: 14px 0 0; font-size: 14px; line-height: 1.7; }
@@ -136,6 +150,58 @@ img { max-width: 100%; display: block; }
 .foot-bot { max-width: var(--maxw); margin: 36px auto 0; padding-top: 22px;
   border-top: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between;
   gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: rgba(255,255,255,.5); }
+
+/* Plan hover (same lift as cards) */
+.plan { transition: transform var(--m-med) var(--ease), box-shadow var(--m-med) var(--ease); }
+.plan:hover { transform: translateY(-3px); box-shadow: var(--shadow-glass); }
+
+/* Scroll-reveal — fade + slight rise as sections enter, staggered via --d */
+.reveal { opacity: 0; transform: translateY(14px);
+  transition: opacity var(--m-slow) var(--ease), transform var(--m-slow) var(--ease);
+  transition-delay: var(--d, 0s); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Hero image — slow, cozy float ("kitchen at noon" warmth, nothing flashy) */
+@keyframes float { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+.hero-art img { animation: float 5.5s ease-in-out infinite alternate; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-art img { animation: none; }
+  .btn, .card, .plan { transition: none; }
+}
+
+/* Waitlist page */
+.wl-main { position: relative; max-width: 560px; margin: 0 auto; padding: 48px 24px 80px; }
+.wl-blob { position: fixed; border-radius: 999px; filter: blur(60px); z-index: -1; pointer-events: none; }
+.wl-blob.t { width: 380px; height: 380px; top: -120px; right: -100px; background: rgba(232,160,32,.32); }
+.wl-blob.g { width: 420px; height: 420px; bottom: -160px; left: -120px; background: rgba(45,106,47,.22); }
+.wl-card { background: rgba(255,253,248,.9); border: 1px solid rgba(255,255,255,.9);
+  border-radius: var(--r-lg); box-shadow: var(--shadow-glass); padding: 34px 30px; }
+.wl-card h1 { font-size: 32px; font-weight: 600; }
+.wl-card .lede { color: var(--muted); font-size: 15.5px; margin: 12px 0 0; }
+.wl-perks { list-style: none; margin: 18px 0 0; padding: 0; }
+.wl-perks li { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 14.5px; }
+.wl-perks svg { width: 18px; height: 18px; color: var(--green); flex: none; }
+.wl-form { margin-top: 22px; display: grid; gap: 14px; }
+.wl-field label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .8px;
+  text-transform: uppercase; color: var(--turmeric-deep); margin-bottom: 6px; }
+.wl-field input { width: 100%; padding: 13px 14px; font: inherit; font-size: 15.5px; color: var(--text);
+  background: #fff; border: 1.5px solid var(--border); border-radius: var(--r-sm); outline: none;
+  transition: border-color var(--m-fast) var(--ease), box-shadow var(--m-fast) var(--ease); }
+.wl-field input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,106,47,.12); }
+.wl-err { display: none; color: #C1440E; font-size: 13.5px; line-height: 1.5; }
+.wl-err.show { display: block; }
+.wl-success { display: none; text-align: center; padding: 10px 4px 4px; }
+.wl-success.show { display: block; }
+.wl-success .tick { width: 64px; height: 64px; margin: 0 auto 14px; border-radius: 999px;
+  background: var(--accent-soft); border: 1px solid var(--accent-line);
+  display: flex; align-items: center; justify-content: center; color: var(--turmeric-deep); }
+.wl-success .tick svg { width: 30px; height: 30px; }
+.wl-success h2 { font-size: 24px; }
+.wl-success p { color: var(--muted); font-size: 14.5px; }
+.wl-micro { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 16px; }
+.wl-back { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 22px; }
 
 /* Responsive */
 @media (max-width: 860px) {
