@@ -92,8 +92,10 @@ img { max-width: 100%; display: block; }
 .hm-stat span { font-size: 12.5px; color: var(--muted); letter-spacing: .4px; }
 .hm-per { font-size: 11.5px; color: var(--muted); opacity: .75; margin-top: 18px;
   text-transform: uppercase; letter-spacing: 1.5px; }
-/* rotating text swaps — quiet 200ms fade, no flashing */
-[data-rot-state], [data-rot-native], [data-rot-name] { transition: opacity .2s var(--ease); }
+/* rotating text swaps — fade out half the hero band, back in the other half,
+   so text starts and finishes exactly with the photo crossfade (700ms total) */
+[data-rot-state], [data-rot-native], [data-rot-name] {
+  transition: opacity calc(var(--m-hero) / 2) var(--ease); }
 .rot-out { opacity: 0; }
 
 /* center — the message */

@@ -23,17 +23,17 @@
     return r === uri ? uri : r + "?width=" + w + "&quality=70&resize=contain";
   }
 
-  /* ---- eased count-up (400ms, easeOutCubic — numbers settle, never flash) */
-  function tweenNum(el, to, suffix) {
+  /* ---- eased count-up (easeOutCubic — numbers settle, never flash) */
+  function tweenNum(el, to, dur) {
     var from = parseInt(el.dataset.val || "0", 10) || 0;
     el.dataset.val = String(to);
-    if (reduced || from === to) { el.textContent = to + (suffix || ""); return; }
-    var t0 = null, DUR = 400;
+    if (reduced || from === to) { el.textContent = to; return; }
+    var t0 = null, DUR = dur || 400;
     function step(ts) {
       if (!t0) t0 = ts;
       var t = Math.min((ts - t0) / DUR, 1);
       var e = 1 - Math.pow(1 - t, 3);
-      el.textContent = Math.round(from + (to - from) * e) + (suffix || "");
+      el.textContent = Math.round(from + (to - from) * e);
       if (t < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -50,42 +50,49 @@
       state: q("[data-rot-state]"), native: q("[data-rot-native]"), name: q("[data-rot-name]"),
       kcal: q("[data-rot-kcal]"), p: q("[data-rot-p]"), f: q("[data-rot-f]"), c: q("[data-rot-c]"),
     };
-    var i = 0, front = 0, timer = null;
+    var i = 0, front = 0, timer = null, gen = 0;
+    var SYNC = 700; // one shared duration — matches --m-hero, so photo,
+                    // text fades and count-ups start AND finish together
 
-    function setText(el, v) {
+    function setText(el, v, instant) {
       if (!el) return;
-      el.classList.add("rot-out");
-      setTimeout(function () { el.textContent = v; el.classList.remove("rot-out"); }, reduced ? 0 : 200);
+      if (instant || reduced) { el.textContent = v; return; }
+      el.classList.add("rot-out"); // fade out SYNC/2 …
+      setTimeout(function () { el.textContent = v; el.classList.remove("rot-out"); }, SYNC / 2); // … fade back SYNC/2
     }
 
     function show(idx, instant) {
       var d = dishes[idx];
-      // crossfade the two stacked layers
+      var my = ++gen; // a newer show() call cancels this one's pending apply
       var back = 1 - front;
-      if (layers[back]) {
-        layers[back].src = img(d.img, w);
-        layers[back].alt = d.name + " — " + d.state;
-        if (instant || reduced) {
-          layers[back].classList.add("on");
+      var l = layers[back];
+
+      // everything fires in the SAME frame, everything runs SYNC ms
+      function apply() {
+        if (my !== gen) return;
+        if (l) {
+          l.classList.add("on");
           if (layers[front]) layers[front].classList.remove("on");
           front = back;
-        } else {
-          var l = layers[back];
-          var swap = function () {
-            l.classList.add("on");
-            layers[front].classList.remove("on");
-            front = back;
-          };
-          l.complete ? swap() : (l.onload = swap);
         }
+        var inst = instant || reduced;
+        setText(els.state, d.state, inst);
+        setText(els.native, d.native, inst);
+        setText(els.name, d.name, inst);
+        if (els.kcal) tweenNum(els.kcal, d.kcal, SYNC);
+        if (els.p) tweenNum(els.p, d.p, SYNC);
+        if (els.f) tweenNum(els.f, d.f, SYNC);
+        if (els.c) tweenNum(els.c, d.c, SYNC);
       }
-      setText(els.state, d.state);
-      setText(els.native, d.native);
-      setText(els.name, d.name);
-      if (els.kcal) tweenNum(els.kcal, d.kcal);
-      if (els.p) tweenNum(els.p, d.p);
-      if (els.f) tweenNum(els.f, d.f);
-      if (els.c) tweenNum(els.c, d.c);
+
+      if (!l) return apply();
+      l.src = img(d.img, w);
+      l.alt = d.name + " — " + d.state;
+      if (instant || reduced) return apply();
+      // hold the text until the photo is decoded, then start both together
+      // (images are preloaded after first paint, so this is normally instant)
+      var ready = l.decode ? l.decode().catch(function () {}) : Promise.resolve();
+      ready.then(function () { requestAnimationFrame(apply); });
     }
 
     show(0, true);
