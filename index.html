@@ -3,19 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Svas — Regional Indian nutrition & meal planning</title>
-<meta name="description" content="Svas builds 7-day meal plans from the regional Indian home cooking you grew up with — with macros computed from IFCT-2017 and reviewed by dietitians. 1,000+ dishes across 28 states.">
-<meta property="og:title" content="Svas — Eat the food you grew up with, and still hit your macros">
-<meta property="og:description" content="Regional Indian meal planning with dietitian-reviewed, IFCT-2017 macros. 1,000+ dishes across 28 states.">
+<title>Svas — The health app built around Indian food</title>
+<meta name="description" content="Finally, a nutrition app that understands Indian food. Know the macros in the meals you already eat — from pesarattu to rajma chawal — and plan healthier weeks without changing your culture.">
+<meta property="og:title" content="Svas — Your food. Your macros. Your week.">
+<meta property="og:description" content="Finally, a nutrition app that understands Indian food. Eat the food you grew up with. Know exactly what's in it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://svas.life">
 <meta name="theme-color" content="#2D6A2F">
 <link rel="icon" type="image/png" href="assets/Favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@600&family=Noto+Sans+Tamil:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Kannada:wght@600&family=Noto+Sans+Gurmukhi:wght@600&family=Noto+Sans+Gujarati:wght@600&family=Noto+Sans+Bengali:wght@600&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
 <script src="assets/intro.js" defer></script>
+<script src="assets/rotation-data.js" defer></script>
+<script src="assets/hero.js" defer></script>
 </head>
 <body>
 
@@ -24,124 +26,134 @@
     <img class="mark-img" src="assets/mark-green.svg" alt=""><b>Svas</b>
   </a>
   <nav class="links">
-    <a href="#why">Why Svas</a>
+    <a href="#food">The food</a>
     <a href="#how">How it works</a>
     <a href="#pricing">Pricing</a>
   </nav>
-  <a class="btn btn-primary btn-sm" href="waitlist.html">Get early access</a>
+  <a class="btn btn-primary btn-sm" href="waitlist.html">Join waitlist</a>
 </header>
 
-<!-- HERO -->
-<section class="hero">
+<!-- HERO — food first: live macros · message · rotating regional dish -->
+<section class="hero" data-rotation data-interval="5000" data-imgw="720">
+
+  <!-- atmosphere: hand-drawn line-art at 4% — never competes with content -->
+  <svg class="motif motif-leaf" viewBox="0 0 220 320" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <path d="M110 12 C 178 70 196 170 168 240 C 150 286 128 306 110 310 C 92 306 70 286 52 240 C 24 170 42 70 110 12 Z"/>
+    <path d="M110 24 V 304"/>
+    <path d="M110 70 C 132 76 152 92 164 112 M110 70 C 88 76 68 92 56 112"/>
+    <path d="M110 130 C 134 136 156 152 168 174 M110 130 C 86 136 64 152 52 174"/>
+    <path d="M110 190 C 130 196 148 210 158 228 M110 190 C 90 196 72 210 62 228"/>
+  </svg>
+  <svg class="motif motif-steam" viewBox="0 0 220 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <path d="M30 200 h160 M40 200 c0 34 28 52 70 52 s70 -18 70 -52"/>
+    <path d="M76 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
+    <path d="M110 174 c-9 -16 9 -23 0 -43 c-9 -18 9 -25 0 -41"/>
+    <path d="M144 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
+  </svg>
+  <svg class="motif motif-rangoli" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <path d="M0 200 A200 200 0 0 1 200 200" transform="rotate(180 100 100)"/>
+    <path d="M0 0 C 40 30 60 30 100 0 M0 0 C 30 40 30 60 0 100"/>
+    <path d="M0 0 C 56 44 84 44 140 0 M0 0 C 44 56 44 84 0 140"/>
+    <circle cx="22" cy="22" r="3"/><circle cx="58" cy="14" r="3"/><circle cx="14" cy="58" r="3"/>
+  </svg>
+
+  <!-- LEFT — live macro display (real per-serving values, NIN-computed) -->
+  <aside class="hero-macros" aria-live="polite">
+    <span class="hm-state" data-rot-state>Andhra Pradesh</span>
+    <span class="hm-native" data-rot-native>పెసరట్టు</span>
+    <span class="hm-name" data-rot-name>Pesarattu</span>
+    <div class="hm-grid">
+      <div class="hm-stat"><b><i data-rot-p>12</i>g</b><span>Protein</span></div>
+      <div class="hm-stat"><b><i data-rot-f>7</i>g</b><span>Fat</span></div>
+      <div class="hm-stat"><b><i data-rot-c>31</i>g</b><span>Carbs</span></div>
+      <div class="hm-stat"><b><i data-rot-kcal>238</i></b><span>Calories</span></div>
+    </div>
+    <span class="hm-per">per serving</span>
+  </aside>
+
+  <!-- CENTER — the message -->
   <div class="hero-copy">
-    <span class="kicker">Regional Indian nutrition</span>
-    <h1>Eat the food you grew up with — and still hit your macros.</h1>
-    <p class="lede">Svas builds a 7-day meal plan from your region's home cooking, not bland diet food.
-      Every dish's calories and protein are computed from <b>IFCT-2017</b> and reviewed by dietitians.</p>
+    <span class="eyebrow">Built around regional Indian cuisine</span>
+    <h1>Your food.<br>Your macros.<br>Your week.</h1>
+    <p class="lede">Know the nutrition in the meals you already eat.
+      Plan healthier weeks without changing your culture.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="waitlist.html">Join the waitlist</a>
-      <a class="btn btn-ghost" href="#how">See how it works</a>
+      <a class="btn btn-primary" href="waitlist.html">Join Waitlist</a>
+      <a class="btn btn-ghost" href="#how">How It Works</a>
     </div>
-    <p class="micro">Early access is rolling out in waves · Free to join · No card, ever</p>
   </div>
-  <div class="hero-art">
+
+  <!-- RIGHT — rotating regional dish -->
+  <div class="hero-food">
     <div class="glow"></div>
-    <img src="assets/app-look.jpg" alt="Svas app — today's meal plan" loading="eager" width="300">
+    <figure class="food-card">
+      <img data-rot-img-a class="on" src="" alt="" loading="eager">
+      <img data-rot-img-b src="" alt="" loading="eager">
+    </figure>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
-<section class="trust reveal">
-  <div class="stat"><b>1,000+</b><span>dishes</span></div>
-  <div class="stat"><b>28</b><span>states + cuisines</span></div>
-  <div class="stat"><b>IFCT-2017</b><span>govt macro data</span></div>
-  <div class="stat"><b>Dietitian</b><span>reviewed</span></div>
+<!-- SECTION 2 — regional showcase -->
+<section id="food" class="sec sec-food">
+  <h2 class="sec-title reveal">India's food.<br>One place.</h2>
+  <div class="gallery" data-gallery aria-label="Regional dishes across India"></div>
 </section>
 
-<!-- WHY -->
-<section id="why" class="section">
-  <h2 class="sec-title reveal">Generic diet apps don't speak your kitchen.</h2>
-  <p class="sec-sub reveal" style="--d:.06s">Calorie counters make you log "1 bowl dal" and guess. Svas already knows pesarattu,
-    dalma, kosha mangsho and saag — and what they actually do to your day.</p>
-  <div class="cards">
-    <div class="card reveal">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15"/><path d="M4.5 12c0 4.3 3.2 7 7.5 7s7.5-2.7 7.5-7"/><path d="M9.8 8.5c-.7-1.1.7-1.7 0-3.2"/><path d="M14.2 8.5c-.7-1.1.7-1.7 0-3.2"/></svg></div>
-      <b>Real regional dishes</b>
-      <p>From Telugu pesarattu to Punjabi rajma to Bengali shukto — meals from 28 states, with native names.</p>
-    </div>
-    <div class="card reveal" style="--d:.08s">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r=".7" fill="currentColor"/></svg></div>
-      <b>Macros you can trust</b>
-      <p>Every value is Σ(grams × IFCT-2017 per-100g) ÷ servings — never scraped or guessed. Reviewed by dietitians.</p>
-    </div>
-    <div class="card reveal" style="--d:.16s">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18.6 6.2c1 1.5.8 4-.7 6.6-1.8 3.2-5 5.8-8.7 6.9-1.7.5-3-.9-2.2-2.3 1.8-3.1 3.1-5 3.8-7.7.6-2.3 2.3-3.9 4.6-3.9 1.3 0 2.5.1 3.2.4z"/><path d="M18.6 6.2c.9-.6 1.3-1.6 1.1-2.7"/></svg></div>
-      <b>Built for how you eat</b>
-      <p>Veg, vegan, egg, non-veg, skip-days, allergies and conditions — your plan adapts, day by day.</p>
-    </div>
+<!-- SECTION 3 — weekly planning -->
+<section id="how" class="sec sec-week alt">
+  <h2 class="sec-title reveal">Plan your week with what you already eat.</h2>
+  <p class="sec-sub reveal" style="--d:.06s">No imported meal plans. No mystery ingredients.</p>
+  <div class="week reveal" style="--d:.1s">
+    <div class="week-row"><span class="wk-day">Monday</span><span class="wk-dish">Pesarattu</span></div>
+    <div class="week-row"><span class="wk-day">Tuesday</span><span class="wk-dish">Rajma Chawal</span></div>
+    <div class="week-row"><span class="wk-day">Wednesday</span><span class="wk-dish">Puttu</span></div>
+    <div class="week-row"><span class="wk-day">Thursday</span><span class="wk-dish">Khaman Dhokla</span></div>
+    <div class="week-row"><span class="wk-day">Friday</span><span class="wk-dish">Macher Jhol</span></div>
+    <div class="week-goal"><span>Weekly goal</span><b>✓ Reached</b></div>
   </div>
 </section>
 
-<!-- HOW -->
-<section id="how" class="section alt">
-  <h2 class="sec-title reveal">Your week, planned in a minute.</h2>
-  <div class="steps">
-    <div class="step reveal">
-      <span class="num">1</span>
-      <b>Tell us about you</b>
-      <p>Age, body, goal, your region(s) and diet. Takes under a minute.</p>
-    </div>
-    <div class="step reveal" style="--d:.08s">
-      <span class="num">2</span>
-      <b>Get a 7-day plan</b>
-      <p>Breakfast to dinner from your region's home cooking, balanced to your targets.</p>
-    </div>
-    <div class="step reveal" style="--d:.16s">
-      <span class="num">3</span>
-      <b>Track &amp; adapt</b>
-      <p>Log what you ate, swap dishes you don't fancy, regenerate any day you like.</p>
-    </div>
+<!-- SECTION 4 — personalized guidance -->
+<section class="sec sec-goals">
+  <h2 class="sec-title reveal">Built around your goals.</h2>
+  <p class="sec-sub reveal" style="--d:.06s">Lose weight. Gain muscle. Eat healthier.<br>Get a plan built around your food.</p>
+  <div class="flow">
+    <div class="flow-node reveal"><span class="flow-dot"></span><b>Goal selection</b></div>
+    <div class="flow-line reveal" style="--d:.08s"></div>
+    <div class="flow-node reveal" style="--d:.12s"><span class="flow-dot"></span><b>Food preferences</b></div>
+    <div class="flow-line reveal" style="--d:.18s"></div>
+    <div class="flow-node reveal" style="--d:.22s"><span class="flow-dot"></span><b>Weekly plan ready</b></div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing" class="section">
+<!-- SECTION 5 — pricing -->
+<section id="pricing" class="sec sec-pricing alt">
   <h2 class="sec-title reveal">Simple pricing.</h2>
-  <p class="sec-sub reveal" style="--d:.06s">Start with a free week of Premium. Keep going free, or unlock the full plan.</p>
   <div class="plans">
     <div class="plan reveal">
       <span class="plan-name">Free</span>
       <div class="price">₹0</div>
-      <ul>
-        <li>Your first 3 days of every plan</li>
-        <li>Regional dishes + accurate macros</li>
-        <li>Meal tracking</li>
-      </ul>
-      <a class="btn btn-ghost btn-block" href="waitlist.html">Join the waitlist</a>
+      <p class="plan-line">Know your food.</p>
+      <a class="btn btn-ghost btn-block" href="waitlist.html">Join Waitlist</a>
     </div>
     <div class="plan featured reveal" style="--d:.08s">
       <span class="badge">1-week free trial</span>
       <span class="plan-name">Premium</span>
       <div class="price"><s class="price-was">₹159</s> ₹99<span>/month</span></div>
-      <div class="price-alt">or <s class="price-was-alt">₹1,200</s> ₹799/year · 2 months free</div>
-      <div class="price-note">Launch offer — save 38%</div>
-      <ul>
-        <li>The full 7-day plan, every week</li>
-        <li>Unlimited swaps &amp; regenerate</li>
-        <li>Calendar &amp; cross-device sync</li>
-        <li>Everything in Free</li>
-      </ul>
-      <a class="btn btn-primary btn-block" href="waitlist.html">Get early access</a>
+      <p class="price-alt">or <s class="price-was-alt">₹1,200</s> ₹799/year · 2 months free</p>
+      <p class="plan-line">Plan around it.</p>
+      <a class="btn btn-primary btn-block" href="waitlist.html">Join Waitlist</a>
     </div>
   </div>
   <p class="micro center">Prices in INR, taxes as applicable. Payments secured by Razorpay.</p>
 </section>
 
-<!-- CTA BAND -->
-<section class="cta-band">
-  <h2>Eat well, the way home tastes.</h2>
-  <p>Early access is rolling out — your regional 7-day plan is one invite away.</p>
-  <a class="btn btn-light" href="waitlist.html">Join the waitlist</a>
+<!-- FINAL CTA -->
+<section class="cta-final">
+  <h2 class="reveal">Be first at the table.</h2>
+  <p class="reveal" style="--d:.06s">We're opening Svas region by region.<br>Join now and we'll save you a seat.</p>
+  <a class="btn btn-primary btn-lg reveal" style="--d:.12s" href="waitlist.html">Join Waitlist</a>
+  <p class="micro reveal" style="--d:.18s">No spam. Only your invitation.</p>
 </section>
 
 <!-- FOOTER -->
@@ -149,11 +161,11 @@
   <div class="foot-top">
     <div class="foot-brand">
       <img class="mark-img foot-mark" src="assets/mark-gold.svg" alt=""><b>Svas</b>
-      <p>Regional Indian nutrition &amp; meal planning.<br>Established in yourself.</p>
+      <p>The health app built around Indian food.<br>Established in yourself.</p>
     </div>
     <div class="foot-col">
       <span>Product</span>
-      <a href="#why">Why Svas</a>
+      <a href="#food">The food</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
       <a href="https://app.svas.life">Open the app</a>
@@ -174,14 +186,14 @@
   </div>
   <div class="foot-bot">
     <span>© 2026 Svas. All rights reserved.</span>
-    <span class="note">Nutrition values are estimates computed from IFCT-2017 — informational, not medical advice.</span>
+    <span class="note">Nutrition values are estimates computed from IFCT-2017, reviewed by dietitians — informational, not medical advice.</span>
   </div>
 </footer>
 
 <script>
 (function () {
   var els = document.querySelectorAll(".reveal");
-  if (!("IntersectionObserver" in window)) { els.forEach ? els.forEach(function(e){e.classList.add("in");}) : null; return; }
+  if (!("IntersectionObserver" in window)) { els.forEach(function(e){e.classList.add("in");}); return; }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
