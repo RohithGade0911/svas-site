@@ -72,11 +72,11 @@ img { max-width: 100%; display: block; }
   display: grid; grid-template-columns: .9fr 1.15fr 1fr;
   grid-template-areas: "macros copy food"; gap: 40px; align-items: center; }
 
-/* atmosphere — line-art at 4%, never competing with content */
-.motif { position: absolute; color: var(--green-dark); opacity: .04; pointer-events: none; z-index: 0; }
-.motif-leaf { width: 230px; left: -60px; bottom: -50px; transform: rotate(18deg); }
-.motif-steam { width: 200px; right: -30px; top: -20px; }
-.motif-rangoli { width: 170px; left: 34%; top: -40px; }
+/* atmosphere — kitchen line-art at ~4%, never competing with content.
+   Sized/placed inline per instance; paths live in the <defs> motif library. */
+.motif { position: absolute; color: var(--green-dark); opacity: .04; pointer-events: none;
+  z-index: 0; fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
 
 /* left — live macro display */
 .hero-macros { grid-area: macros; position: relative; z-index: 1; display: flex; flex-direction: column; }
@@ -116,39 +116,57 @@ img { max-width: 100%; display: block; }
   object-fit: contain; border-radius: var(--r-md);
   opacity: 0; transition: opacity var(--m-hero) var(--ease); }
 .food-card img.on { opacity: 1; }
+/* ambient life — a slow "kitchen at noon" float + breathing glow */
+@keyframes float { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+.food-card { animation: float 5.5s ease-in-out 1.8s infinite alternate; }
+@keyframes breathe { from { opacity: .7; } to { opacity: 1; } }
+.glow { animation: breathe 6s ease-in-out infinite alternate; }
+
+/* entrance — staggered fade-rise once the intro lifts (body.landed via hero.js) */
+.land { opacity: 0; }
+body.landed .land { animation: land-rise .7s var(--ease) both; animation-delay: var(--ld, 0s); }
+body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
+@keyframes land-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes land-card { from { opacity: 0; transform: translateY(26px) scale(.96); } to { opacity: 1; transform: none; } }
 
 /* ============================================================ SECTIONS */
-.sec { max-width: var(--maxw); margin: 0 auto; padding: 120px 24px; }
+.sec { position: relative; overflow: hidden; max-width: var(--maxw); margin: 0 auto; padding: 120px 24px; }
 .sec.alt { max-width: none; background: var(--canvas); }
 .sec.alt > * { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
-.sec-title { font-size: 44px; font-weight: 600; text-align: center; }
-.sec-sub { text-align: center; color: var(--muted); font-size: 18px; max-width: 46ch; margin: 18px auto 0; }
+.sec-title { position: relative; font-size: 44px; font-weight: 600; text-align: center; }
+.sec-sub { position: relative; text-align: center; color: var(--muted); font-size: 18px; max-width: 46ch; margin: 18px auto 0; }
 
-/* --- regional showcase marquee */
+/* --- regional showcase: 3 floating rows of native-script dish names */
 .sec-food { max-width: none; padding-left: 0; padding-right: 0; }
-.gallery { margin-top: 56px; overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.gal-track { display: flex; gap: 20px; width: max-content; padding: 8px 0 16px;
-  animation: gal-scroll 70s linear infinite; }
-.gallery:hover .gal-track { animation-play-state: paused; }
-@keyframes gal-scroll { to { transform: translateX(-50%); } }
-.gallery.static { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
-.gallery.static .gal-track { animation: none; }
-.gal-card { width: 228px; flex: none; background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--r-md); padding: 12px 14px 16px; cursor: default;
-  transition: transform var(--m-med) var(--ease), box-shadow var(--m-med) var(--ease); }
-.gal-card:hover, .gal-card:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-raised); outline: none; }
-.gal-ph { aspect-ratio: 1; border-radius: var(--r-sm); overflow: hidden; margin-bottom: 12px;
-  background: linear-gradient(160deg, #FFFDF6, #F6EEDC); display: flex; align-items: center; justify-content: center; }
-.gal-ph img { width: 100%; height: 100%; object-fit: contain; }
-.gal-card b { display: block; font-family: "Fraunces", serif; font-size: 17px; line-height: 1.25; }
-.gal-state { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
-.gal-macros { display: block; font-size: 13px; font-weight: 600; color: var(--green-dark);
-  margin-top: 8px; opacity: 0; transform: translateY(4px);
+.ticker { position: relative; margin-top: 40px; display: grid; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.tk-row { display: flex; align-items: flex-start; width: max-content;
+  padding: 34px 0 10px; /* headroom for the macro chip */
+  animation: tick 80s linear infinite; }
+.tk-row.rev { animation-direction: reverse; }
+@keyframes tick { to { transform: translateX(-50%); } }
+.tk-row:hover, .tk-row:focus-within { animation-play-state: paused; }
+.ticker.static { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+.ticker.static .tk-row { animation: none; }
+.tk-item { position: relative; display: flex; flex-direction: column; align-items: center;
+  padding: 2px 30px; cursor: default; outline: none; }
+.tk-item::after { content: ""; position: absolute; right: -3px; top: 22px;
+  width: 5px; height: 5px; border-radius: 999px; background: var(--accent-line); }
+.tk-native { font-family: var(--font-native); font-weight: 600; font-size: 27px; line-height: 1.5;
+  color: var(--text); white-space: nowrap;
+  transition: color var(--m-med) var(--ease), transform var(--m-med) var(--ease); }
+.tk-name { font-size: 12px; color: var(--muted); letter-spacing: .4px; white-space: nowrap; margin-top: 1px; }
+.tk-item:hover .tk-native, .tk-item:focus-visible .tk-native, .tk-item.open .tk-native {
+  color: var(--green-dark); transform: translateY(-2px); }
+.tk-chip { position: absolute; top: -26px; left: 50%; transform: translate(-50%, 6px);
+  background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-raised);
+  border-radius: 999px; padding: 4px 13px; font-size: 12.5px; font-weight: 600;
+  color: var(--green-dark); white-space: nowrap; pointer-events: none; opacity: 0;
+  font-variant-numeric: tabular-nums;
   transition: opacity var(--m-med) var(--ease), transform var(--m-med) var(--ease); }
-.gal-card:hover .gal-macros, .gal-card:focus-visible .gal-macros, .gal-card.open .gal-macros {
-  opacity: 1; transform: none; }
+.tk-item:hover .tk-chip, .tk-item:focus-visible .tk-chip, .tk-item.open .tk-chip {
+  opacity: 1; transform: translate(-50%, 0); }
 
 /* --- weekly planning (lifestyle strip, not an app screenshot) */
 .sec.alt > .week, .week { max-width: 480px; margin: 52px auto 0; background: var(--card);
@@ -195,7 +213,7 @@ img { max-width: 100%; display: block; }
 .plan .btn { margin-top: auto; }
 
 /* --- final CTA — massive whitespace */
-.cta-final { text-align: center; padding: 170px 24px 180px; }
+.cta-final { position: relative; overflow: hidden; text-align: center; padding: 170px 24px 180px; }
 .cta-final h2 { font-size: 52px; font-weight: 600; }
 .cta-final p { color: var(--muted); font-size: 19px; margin: 20px 0 34px; }
 .cta-final .micro { margin-top: 22px; }
@@ -223,9 +241,11 @@ img { max-width: 100%; display: block; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ============================================================ WAITLIST */
-.wl { max-width: 1060px; margin: 0 auto; min-height: calc(100vh - 64px);
+.wl { position: relative; overflow: hidden; max-width: 1060px; margin: 0 auto;
+  min-height: calc(100vh - 64px);
   display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
   padding: 56px 24px 80px; }
+.wl-pane, .wl-show { position: relative; }
 .wl-show { position: relative; }
 .wl-card-photo { max-width: 420px; margin: 0 auto; }
 .wl-show-meta { text-align: center; margin-top: 22px; }
@@ -265,8 +285,10 @@ img { max-width: 100%; display: block; }
 /* ============================================================ MOTION SAFETY */
 @media (prefers-reduced-motion: reduce) {
   .reveal, .flow-line.reveal { opacity: 1; transform: none; transition: none; }
-  .btn, .gal-card, .plan { transition: none; }
-  .gal-track { animation: none; }
+  .land { opacity: 1; }
+  body.landed .land, body.landed .land-card { animation: none; }
+  .btn, .plan, .tk-native, .tk-chip { transition: none; }
+  .tk-row, .food-card, .glow { animation: none; }
   .food-card img { transition: none; }
 }
 
@@ -284,9 +306,11 @@ img { max-width: 100%; display: block; }
   .hero-macros { text-align: center; align-items: center; }
   .hm-grid { grid-template-columns: repeat(4, auto); gap: 14px 26px; }
   .hm-stat b { font-size: 26px; }
-  .motif-rangoli { display: none; }
+  .motif-mid { display: none; }
   .sec { padding: 88px 24px; }
   .sec-title { font-size: 34px; }
+  .tk-native { font-size: 22px; }
+  .tk-item { padding: 2px 22px; }
   .plans { grid-template-columns: 1fr; }
   .cta-final { padding: 110px 24px 120px; }
   .cta-final h2 { font-size: 38px; }

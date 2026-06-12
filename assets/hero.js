@@ -105,28 +105,49 @@
     });
   }
 
-  /* -------------------------------------------------- marquee food gallery */
-  function initGallery(root) {
-    var track = document.createElement("div");
-    track.className = "gal-track";
-    function card(d) {
-      var a = document.createElement("article");
-      a.className = "gal-card";
-      a.tabIndex = 0;
-      a.innerHTML =
-        '<div class="gal-ph"><img loading="lazy" decoding="async" alt="' + d.name + '" src="' + img(d.img, 440) + '"></div>' +
-        '<b>' + d.name + "</b>" +
-        '<span class="gal-state">' + d.state + "</span>" +
-        '<span class="gal-macros">' + d.p + "g protein · " + d.kcal + " kcal</span>";
-      a.addEventListener("click", function () { a.classList.toggle("open"); }); // mobile: tap reveals
-      return a;
+  /* ------------------------------- native-names ticker (3 floating rows) */
+  function initTicker(root) {
+    var ROWS = 3, SPEEDS = [72, 88, 64]; // seconds per loop — each row drifts differently
+    function item(d) {
+      var s = document.createElement("span");
+      s.className = "tk-item";
+      s.tabIndex = 0;
+      s.innerHTML =
+        '<span class="tk-chip">' + d.p + "g protein · " + d.kcal + " kcal</span>" +
+        '<b class="tk-native">' + d.native + "</b>" +
+        '<span class="tk-name">' + d.name + " · " + d.state + "</span>";
+      s.addEventListener("click", function () { s.classList.toggle("open"); }); // mobile: tap reveals
+      return s;
     }
-    DATA.gallery.forEach(function (d) { track.appendChild(card(d)); });
-    if (!reduced) DATA.gallery.forEach(function (d) { track.appendChild(card(d)); }); // duplicate → seamless loop
-    else root.classList.add("static");
-    root.appendChild(track);
+    for (var r = 0; r < ROWS; r++) {
+      var row = document.createElement("div");
+      row.className = "tk-row" + (r === 1 ? " rev" : ""); // middle row drifts the other way
+      row.style.animationDuration = SPEEDS[r] + "s";
+      var dishes = DATA.ticker.filter(function (_, i) { return i % ROWS === r; });
+      dishes.forEach(function (d) { row.appendChild(item(d)); });
+      if (!reduced) dishes.forEach(function (d) { row.appendChild(item(d)); }); // duplicate → seamless loop
+      root.appendChild(row);
+    }
+    if (reduced) root.classList.add("static");
+  }
+
+  /* --------------------------------- entrance — land after the intro lifts */
+  function land() { document.body.classList.add("landed"); }
+  function initLanding() {
+    var intro = document.getElementById("svas-intro");
+    if (!intro || reduced) return land();
+    var done = false;
+    var fin = function () { if (!done) { done = true; land(); } };
+    new MutationObserver(function () {
+      if (!document.getElementById("svas-intro") || intro.classList.contains("out")) fin();
+    }).observe(document.body, { childList: true, subtree: false, attributes: true, attributeFilter: ["class"] });
+    new MutationObserver(function () {
+      if (intro.classList.contains("out")) fin();
+    }).observe(intro, { attributes: true, attributeFilter: ["class"] });
+    setTimeout(fin, 9000); // hard ceiling — never leave the page unrevealed
   }
 
   document.querySelectorAll("[data-rotation]").forEach(initRotation);
-  document.querySelectorAll("[data-gallery]").forEach(initGallery);
+  document.querySelectorAll("[data-ticker]").forEach(initTicker);
+  initLanding();
 })();

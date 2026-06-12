@@ -91,50 +91,62 @@ window.SVAS_ROTATION = {
    "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/mh_kanda_poha.jpg"
   }
  ],
- "gallery": [
+ "ticker": [
   {
    "id": "tel_pesarattu",
    "state": "Andhra Pradesh",
    "name": "Pesarattu",
    "native": "పెసరట్టు",
    "kcal": 238,
-   "p": 12,
-   "f": 7,
-   "c": 31,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/tel_pesarattu.jpg"
+   "p": 12
   },
   {
-   "id": "pun_rajma_chawal",
-   "state": "Punjab",
-   "name": "Rajma Chawal",
-   "native": "ਰਾਜਮਾ ਚਾਵਲ",
-   "kcal": 363,
-   "p": 13,
-   "f": 6,
-   "c": 62,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/pun_rajma_chawal.jpg"
+   "id": "tel_pulihora",
+   "state": "Andhra Pradesh",
+   "name": "Pulihora",
+   "native": "పులిహోర",
+   "kcal": 365,
+   "p": 9
   },
   {
-   "id": "kl_puttu",
-   "state": "Kerala",
-   "name": "Puttu",
-   "native": "പുട്ട്",
-   "kcal": 239,
-   "p": 5,
-   "f": 7,
-   "c": 40,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/kl_puttu.jpg"
+   "id": "tel_gongura_pachadi",
+   "state": "Andhra Pradesh",
+   "name": "Gongura Pachadi",
+   "native": "గోంగూర పచ్చడి",
+   "kcal": 64,
+   "p": 2
   },
   {
-   "id": "gj_dhokla",
-   "state": "Gujarat",
-   "name": "Khaman Dhokla",
-   "native": "ઢોકળા",
+   "id": "tel_gutti_vankaya",
+   "state": "Andhra Pradesh",
+   "name": "Gutti Vankaya Kura",
+   "native": "గుత్తి వంకాయ కూర",
    "kcal": 216,
-   "p": 12,
-   "f": 7,
-   "c": 27,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/gj_dhokla.jpg"
+   "p": 6
+  },
+  {
+   "id": "tel_sarva_pindi",
+   "state": "Telangana",
+   "name": "Sarva Pindi",
+   "native": "సర్వ పిండి",
+   "kcal": 307,
+   "p": 8
+  },
+  {
+   "id": "tel_idli",
+   "state": "Andhra Pradesh",
+   "name": "Idli",
+   "native": "ఇడ్లీ",
+   "kcal": 259,
+   "p": 10
+  },
+  {
+   "id": "tel_upma",
+   "state": "Andhra Pradesh",
+   "name": "Upma",
+   "native": "ఉప్మా",
+   "kcal": 287,
+   "p": 9
   },
   {
    "id": "tn_ven_pongal",
@@ -142,21 +154,71 @@ window.SVAS_ROTATION = {
    "name": "Ven Pongal",
    "native": "வெண் பொங்கல்",
    "kcal": 279,
-   "p": 8,
-   "f": 10,
-   "c": 39,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/tn_ven_pongal.jpg"
+   "p": 8
   },
   {
-   "id": "bn_macher_jhol",
-   "state": "West Bengal",
-   "name": "Macher Jhol",
-   "native": "মাছের ঝোল",
+   "id": "tn_sambar",
+   "state": "Tamil Nadu",
+   "name": "Sambar",
+   "native": "சாம்பார்",
+   "kcal": 162,
+   "p": 8
+  },
+  {
+   "id": "tn_tamil_rasam",
+   "state": "Tamil Nadu",
+   "name": "Rasam",
+   "native": "ரசம்",
+   "kcal": 75,
+   "p": 3
+  },
+  {
+   "id": "tn_kootu",
+   "state": "Tamil Nadu",
+   "name": "Kootu",
+   "native": "கூட்டு",
+   "kcal": 131,
+   "p": 5
+  },
+  {
+   "id": "tn_idiyappam",
+   "state": "Tamil Nadu",
+   "name": "Idiyappam",
+   "native": "இடியாப்பம்",
    "kcal": 209,
-   "p": 25,
-   "f": 10,
-   "c": 5,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/bn_macher_jhol.jpg"
+   "p": 4
+  },
+  {
+   "id": "tn_appam",
+   "state": "Tamil Nadu",
+   "name": "Appam",
+   "native": "ஆப்பம்",
+   "kcal": 220,
+   "p": 4
+  },
+  {
+   "id": "kl_puttu",
+   "state": "Kerala",
+   "name": "Puttu",
+   "native": "പുട്ട്",
+   "kcal": 239,
+   "p": 5
+  },
+  {
+   "id": "kl_kadala_curry",
+   "state": "Kerala",
+   "name": "Kadala Curry",
+   "native": "കടല കറി",
+   "kcal": 243,
+   "p": 11
+  },
+  {
+   "id": "kl_meen_curry",
+   "state": "Kerala",
+   "name": "Meen Curry",
+   "native": "മീൻ കറി",
+   "kcal": 245,
+   "p": 26
   },
   {
    "id": "kn_bisi_bele_bath",
@@ -164,10 +226,143 @@ window.SVAS_ROTATION = {
    "name": "Bisi Bele Bath",
    "native": "ಬಿಸಿ ಬೇಳೆ ಬಾತ್",
    "kcal": 321,
-   "p": 9,
-   "f": 11,
-   "c": 46,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/kn_bisi_bele_bath.jpg"
+   "p": 9
+  },
+  {
+   "id": "kn_neer_dosa",
+   "state": "Karnataka",
+   "name": "Neer Dosa",
+   "native": "ನೀರ್ ದೋಸೆ",
+   "kcal": 191,
+   "p": 4
+  },
+  {
+   "id": "kn_ragi_mudde",
+   "state": "Karnataka",
+   "name": "Ragi Mudde",
+   "native": "ರಾಗಿ ಮುದ್ದೆ",
+   "kcal": 196,
+   "p": 4
+  },
+  {
+   "id": "pun_rajma_chawal",
+   "state": "Punjab",
+   "name": "Rajma Chawal",
+   "native": "ਰਾਜਮਾ ਚਾਵਲ",
+   "kcal": 363,
+   "p": 13
+  },
+  {
+   "id": "pun_sarson_saag",
+   "state": "Punjab",
+   "name": "Sarson da Saag",
+   "native": "ਸਰ੍ਹੋਂ ਦਾ ਸਾਗ",
+   "kcal": 132,
+   "p": 5
+  },
+  {
+   "id": "pun_chole_masala",
+   "state": "Punjab",
+   "name": "Chole",
+   "native": "ਛੋਲੇ ਮਸਾਲਾ",
+   "kcal": 233,
+   "p": 11
+  },
+  {
+   "id": "pun_kadhi_pakora",
+   "state": "Punjab",
+   "name": "Kadhi Pakora",
+   "native": "ਕੜੀ ਪਕੌੜਾ",
+   "kcal": 229,
+   "p": 10
+  },
+  {
+   "id": "pun_dal_makhani",
+   "state": "Punjab",
+   "name": "Dal Makhani",
+   "native": "ਦਾਲ ਮੱਖਣੀ",
+   "kcal": 243,
+   "p": 12
+  },
+  {
+   "id": "pun_aloo_paratha",
+   "state": "Punjab",
+   "name": "Aloo Paratha",
+   "native": "ਆਲੂ ਪਰਾਂਠਾ",
+   "kcal": 336,
+   "p": 8
+  },
+  {
+   "id": "gj_dhokla",
+   "state": "Gujarat",
+   "name": "Khaman Dhokla",
+   "native": "ઢોકળા",
+   "kcal": 216,
+   "p": 12
+  },
+  {
+   "id": "gj_khandvi",
+   "state": "Gujarat",
+   "name": "Khandvi",
+   "native": "ખાંડવી",
+   "kcal": 165,
+   "p": 8
+  },
+  {
+   "id": "gj_undhiyu",
+   "state": "Gujarat",
+   "name": "Undhiyu",
+   "native": "ઊંધિયું",
+   "kcal": 177,
+   "p": 4
+  },
+  {
+   "id": "bn_macher_jhol",
+   "state": "West Bengal",
+   "name": "Macher Jhol",
+   "native": "মাছের ঝোল",
+   "kcal": 209,
+   "p": 25
+  },
+  {
+   "id": "bn_shukto",
+   "state": "West Bengal",
+   "name": "Shukto",
+   "native": "শুক্তো",
+   "kcal": 86,
+   "p": 2
+  },
+  {
+   "id": "bn_luchi",
+   "state": "West Bengal",
+   "name": "Luchi",
+   "native": "লুচি",
+   "kcal": 226,
+   "p": 5
+  },
+  {
+   "id": "bn_aloo_posto",
+   "state": "West Bengal",
+   "name": "Aloo Posto",
+   "native": "আলু পোস্ত",
+   "kcal": 143,
+   "p": 3
+  },
+  {
+   "id": "bn_cholar_dal",
+   "state": "West Bengal",
+   "name": "Cholar Dal",
+   "native": "ছোলার ডাল",
+   "kcal": 187,
+   "p": 9
+  },
+  {
+   "id": "bn_kosha_mangsho",
+   "state": "West Bengal",
+   "name": "Kosha Mangsho",
+   "native": "কষা মাংস",
+   "kcal": 275,
+   "p": 27
   },
   {
    "id": "mh_kanda_poha",
@@ -175,32 +370,39 @@ window.SVAS_ROTATION = {
    "name": "Kanda Poha",
    "native": "कांदे पोहे",
    "kcal": 223,
-   "p": 5,
-   "f": 7,
-   "c": 34,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/mh_kanda_poha.jpg"
+   "p": 5
   },
   {
-   "id": "tel_sarva_pindi",
-   "state": "Telangana",
-   "name": "Sarva Pindi (Ginnappa)",
-   "native": "సర్వ పిండి",
-   "kcal": 307,
-   "p": 8,
-   "f": 10,
-   "c": 46,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/tel_sarva_pindi.jpg"
+   "id": "mh_misal_pav",
+   "state": "Maharashtra",
+   "name": "Misal Pav",
+   "native": "मिसळ पाव",
+   "kcal": 316,
+   "p": 14
   },
   {
-   "id": "as_masor_tenga",
-   "state": "Assam",
-   "name": "Masor Tenga",
-   "native": "মাছৰ টেঙা",
-   "kcal": 178,
-   "p": 25,
-   "f": 8,
-   "c": 2,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/as_masor_tenga.jpg"
+   "id": "mh_varan_bhaat",
+   "state": "Maharashtra",
+   "name": "Varan Bhaat",
+   "native": "वरण भात",
+   "kcal": 142,
+   "p": 7
+  },
+  {
+   "id": "mh_thalipeeth",
+   "state": "Maharashtra",
+   "name": "Thalipeeth",
+   "native": "थालीपीठ",
+   "kcal": 223,
+   "p": 7
+  },
+  {
+   "id": "mh_zunka",
+   "state": "Maharashtra",
+   "name": "Zunka",
+   "native": "झुणका",
+   "kcal": 151,
+   "p": 7
   },
   {
    "id": "od_dalma",
@@ -208,10 +410,15 @@ window.SVAS_ROTATION = {
    "name": "Dalma",
    "native": "ଡାଲମା",
    "kcal": 143,
-   "p": 7,
-   "f": 3,
-   "c": 22,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/od_dalma.jpg"
+   "p": 7
+  },
+  {
+   "id": "od_pakhala_bhata",
+   "state": "Odisha",
+   "name": "Pakhala Bhata",
+   "native": "ପଖାଳ ଭାତ",
+   "kcal": 142,
+   "p": 3
   },
   {
    "id": "bh_litti_chokha",
@@ -219,10 +426,15 @@ window.SVAS_ROTATION = {
    "name": "Litti Chokha",
    "native": "लिट्टी चोखा",
    "kcal": 315,
-   "p": 10,
-   "f": 8,
-   "c": 48,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/bh_litti_chokha.jpg"
+   "p": 10
+  },
+  {
+   "id": "bh_sattu_paratha",
+   "state": "Bihar",
+   "name": "Sattu Paratha",
+   "native": "सत्तू पराठा",
+   "kcal": 312,
+   "p": 11
   },
   {
    "id": "rj_dal_baati_churma",
@@ -230,10 +442,39 @@ window.SVAS_ROTATION = {
    "name": "Dal Baati Churma",
    "native": "दाल बाटी चूरमा",
    "kcal": 391,
-   "p": 12,
-   "f": 14,
-   "c": 53,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/rj_dal_baati_churma.jpg"
+   "p": 12
+  },
+  {
+   "id": "rj_gatte_ki_sabzi",
+   "state": "Rajasthan",
+   "name": "Gatte ki Sabzi",
+   "native": "गट्टे की सब्ज़ी",
+   "kcal": 204,
+   "p": 10
+  },
+  {
+   "id": "up_tehri",
+   "state": "Uttar Pradesh",
+   "name": "Tehri",
+   "native": "तहरी",
+   "kcal": 258,
+   "p": 6
+  },
+  {
+   "id": "mp_poha_jalebi",
+   "state": "Madhya Pradesh",
+   "name": "Poha Jalebi",
+   "native": "पोहा जलेबी",
+   "kcal": 204,
+   "p": 5
+  },
+  {
+   "id": "hp_siddu",
+   "state": "Himachal Pradesh",
+   "name": "Siddu",
+   "native": "सिड्डू",
+   "kcal": 238,
+   "p": 8
   },
   {
    "id": "hp_chana_madra",
@@ -241,21 +482,15 @@ window.SVAS_ROTATION = {
    "name": "Chana Madra",
    "native": "चना मदरा",
    "kcal": 236,
-   "p": 11,
-   "f": 11,
-   "c": 22,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/hp_chana_madra.jpg"
+   "p": 11
   },
   {
-   "id": "ga_fish_curry",
-   "state": "Goa",
-   "name": "Goan Fish Curry",
-   "native": "माशाचें कालवण",
-   "kcal": 248,
-   "p": 26,
-   "f": 13,
-   "c": 7,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/ga_fish_curry.jpg"
+   "id": "ks_rogan_josh",
+   "state": "Kashmir",
+   "name": "Rogan Josh",
+   "native": "रोगन जोश",
+   "kcal": 277,
+   "p": 27
   },
   {
    "id": "sk_thukpa",
@@ -263,10 +498,23 @@ window.SVAS_ROTATION = {
    "name": "Thukpa",
    "native": "थुक्पा",
    "kcal": 196,
-   "p": 10,
-   "f": 8,
-   "c": 21,
-   "img": "https://jtschfacrjsynryiyyyk.supabase.co/storage/v1/object/public/dish-photos/sk_thukpa.jpg"
+   "p": 10
+  },
+  {
+   "id": "as_masor_tenga",
+   "state": "Assam",
+   "name": "Masor Tenga",
+   "native": "মাছৰ টেঙা",
+   "kcal": 178,
+   "p": 25
+  },
+  {
+   "id": "ga_fish_curry",
+   "state": "Goa",
+   "name": "Goan Fish Curry",
+   "native": "माशाचें कालवण",
+   "kcal": 248,
+   "p": 26
   }
  ]
 };

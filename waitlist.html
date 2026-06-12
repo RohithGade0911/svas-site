@@ -11,11 +11,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@600&family=Noto+Sans+Tamil:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Kannada:wght@600&family=Noto+Sans+Gurmukhi:wght@600&family=Noto+Sans+Gujarati:wght@600&family=Noto+Sans+Bengali:wght@600&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 <script src="assets/rotation-data.js" defer></script>
 <script src="assets/hero.js" defer></script>
 </head>
 <body>
+
+<!-- kitchen line-art motif library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="m-leaf" viewBox="0 0 220 320">
+      <path d="M110 12 C 178 70 196 170 168 240 C 150 286 128 306 110 310 C 92 306 70 286 52 240 C 24 170 42 70 110 12 Z"/>
+      <path d="M110 24 V 304"/>
+      <path d="M110 70 C 132 76 152 92 164 112 M110 70 C 88 76 68 92 56 112"/>
+      <path d="M110 130 C 134 136 156 152 168 174 M110 130 C 86 136 64 152 52 174"/>
+      <path d="M110 190 C 130 196 148 210 158 228 M110 190 C 90 196 72 210 62 228"/>
+    </symbol>
+    <symbol id="m-chilli" viewBox="0 0 200 200">
+      <path d="M48 52 C 40 110 70 160 140 172 C 158 175 166 166 158 156 C 120 146 84 108 76 52 Z"/>
+      <path d="M58 50 C 62 36 76 30 90 36"/>
+      <path d="M74 34 C 70 22 76 12 88 10"/>
+    </symbol>
+    <symbol id="m-coriander" viewBox="0 0 200 240">
+      <path d="M100 230 C 100 170 100 120 100 78"/>
+      <path d="M100 130 C 70 122 52 100 54 72 C 78 70 96 84 100 110"/>
+      <path d="M100 130 C 130 122 148 100 146 72 C 122 70 104 84 100 110"/>
+      <path d="M100 78 C 78 66 72 42 84 22 C 104 30 112 52 100 78 Z"/>
+      <path d="M100 172 C 82 168 70 156 68 140"/>
+    </symbol>
+    <symbol id="m-steam" viewBox="0 0 220 260">
+      <path d="M30 200 h160 M40 200 c0 34 28 52 70 52 s70 -18 70 -52"/>
+      <path d="M76 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
+      <path d="M110 174 c-9 -16 9 -23 0 -43 c-9 -18 9 -25 0 -41"/>
+      <path d="M144 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
+    </symbol>
+  </defs>
+</svg>
 
 <header class="nav">
   <a class="brand" href="/">
@@ -24,9 +55,13 @@
 </header>
 
 <main class="wl">
+  <svg class="motif" style="width:200px;left:-50px;bottom:6%;transform:rotate(16deg)" viewBox="0 0 220 320" aria-hidden="true"><use href="#m-leaf"/></svg>
+  <svg class="motif" style="width:150px;right:-20px;top:4%;transform:rotate(18deg)" viewBox="0 0 200 240" aria-hidden="true"><use href="#m-coriander"/></svg>
+  <svg class="motif" style="width:120px;right:10%;bottom:2%;transform:rotate(-22deg)" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-chilli"/></svg>
+  <svg class="motif" style="width:140px;left:38%;top:-30px" viewBox="0 0 220 260" aria-hidden="true"><use href="#m-steam"/></svg>
 
   <!-- LEFT — ambient food showcase (slower cadence than the homepage) -->
-  <aside class="wl-show" data-rotation data-interval="7000" data-imgw="720" aria-live="polite">
+  <aside class="wl-show land land-card" style="--ld:.35s" data-rotation data-interval="7000" data-imgw="720" aria-live="polite">
     <figure class="food-card wl-card-photo">
       <img data-rot-img-a class="on" src="" alt="" loading="eager">
       <img data-rot-img-b src="" alt="" loading="eager">
@@ -45,11 +80,11 @@
   <!-- RIGHT — the invitation -->
   <section class="wl-pane">
     <div id="wl-form-pane">
-      <span class="eyebrow">Early access</span>
-      <h1>Your region is on the menu.</h1>
-      <p class="lede">Join the waitlist and we'll let you know when Svas arrives.</p>
+      <span class="eyebrow land" style="--ld:.05s">Early access</span>
+      <h1 class="land" style="--ld:.12s">Your region is on the menu.</h1>
+      <p class="lede land" style="--ld:.2s">Join the waitlist and we'll let you know when Svas arrives.</p>
 
-      <form class="wl-form" id="wl-form" novalidate>
+      <form class="wl-form land" style="--ld:.28s" id="wl-form" novalidate>
         <div class="wl-field">
           <label for="wl-name">Name</label>
           <input id="wl-name" name="name" type="text" autocomplete="name" maxlength="120" placeholder="e.g. Ananya" required>
@@ -62,13 +97,13 @@
         <button class="btn btn-primary btn-block" id="wl-submit" type="submit">Join Waitlist</button>
       </form>
 
-      <ul class="wl-perks">
+      <ul class="wl-perks land" style="--ld:.38s">
         <li>Regional Indian foods</li>
         <li>Personalized weekly plans</li>
         <li>Built around what you already eat</li>
       </ul>
 
-      <p class="wl-micro">No spam.<br>Just your invitation.</p>
+      <p class="wl-micro land" style="--ld:.46s">No spam.<br>Just your invitation.</p>
     </div>
 
     <div class="wl-success" id="wl-success">
@@ -85,6 +120,8 @@
 
 <script>
 (function () {
+  // entrance safety net — never leave .land content hidden if hero.js fails
+  setTimeout(function () { document.body.classList.add("landed"); }, 10000);
   var SUPABASE_URL = "https://jtschfacrjsynryiyyyk.supabase.co";
   var KEY = "sb_publishable_2uL2zVf_cpObToPtKODMZw_cH0c8TIe"; // publishable — safe in the client
   var form = document.getElementById("wl-form");

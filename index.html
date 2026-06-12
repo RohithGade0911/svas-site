@@ -13,13 +13,59 @@
 <link rel="icon" type="image/png" href="assets/Favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@600&family=Noto+Sans+Tamil:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Kannada:wght@600&family=Noto+Sans+Gurmukhi:wght@600&family=Noto+Sans+Gujarati:wght@600&family=Noto+Sans+Bengali:wght@600&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@600&family=Noto+Sans+Tamil:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Kannada:wght@600&family=Noto+Sans+Gurmukhi:wght@600&family=Noto+Sans+Gujarati:wght@600&family=Noto+Sans+Bengali:wght@600&family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+Oriya:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=4">
 <script src="assets/intro.js" defer></script>
 <script src="assets/rotation-data.js" defer></script>
 <script src="assets/hero.js" defer></script>
 </head>
 <body>
+
+<!-- kitchen line-art motif library (referenced via <use>; drawn at 3–5% opacity) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="m-leaf" viewBox="0 0 220 320">
+      <path d="M110 12 C 178 70 196 170 168 240 C 150 286 128 306 110 310 C 92 306 70 286 52 240 C 24 170 42 70 110 12 Z"/>
+      <path d="M110 24 V 304"/>
+      <path d="M110 70 C 132 76 152 92 164 112 M110 70 C 88 76 68 92 56 112"/>
+      <path d="M110 130 C 134 136 156 152 168 174 M110 130 C 86 136 64 152 52 174"/>
+      <path d="M110 190 C 130 196 148 210 158 228 M110 190 C 90 196 72 210 62 228"/>
+    </symbol>
+    <symbol id="m-steam" viewBox="0 0 220 260">
+      <path d="M30 200 h160 M40 200 c0 34 28 52 70 52 s70 -18 70 -52"/>
+      <path d="M76 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
+      <path d="M110 174 c-9 -16 9 -23 0 -43 c-9 -18 9 -25 0 -41"/>
+      <path d="M144 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
+    </symbol>
+    <symbol id="m-rangoli" viewBox="0 0 200 200">
+      <path d="M0 0 C 40 30 60 30 100 0 M0 0 C 30 40 30 60 0 100"/>
+      <path d="M0 0 C 56 44 84 44 140 0 M0 0 C 44 56 44 84 0 140"/>
+      <circle cx="22" cy="22" r="3"/><circle cx="58" cy="14" r="3"/><circle cx="14" cy="58" r="3"/>
+    </symbol>
+    <symbol id="m-chilli" viewBox="0 0 200 200">
+      <path d="M48 52 C 40 110 70 160 140 172 C 158 175 166 166 158 156 C 120 146 84 108 76 52 Z"/>
+      <path d="M58 50 C 62 36 76 30 90 36"/>
+      <path d="M74 34 C 70 22 76 12 88 10"/>
+    </symbol>
+    <symbol id="m-coriander" viewBox="0 0 200 240">
+      <path d="M100 230 C 100 170 100 120 100 78"/>
+      <path d="M100 130 C 70 122 52 100 54 72 C 78 70 96 84 100 110"/>
+      <path d="M100 130 C 130 122 148 100 146 72 C 122 70 104 84 100 110"/>
+      <path d="M100 78 C 78 66 72 42 84 22 C 104 30 112 52 100 78 Z"/>
+      <path d="M100 172 C 82 168 70 156 68 140"/>
+    </symbol>
+    <symbol id="m-dosa" viewBox="0 0 240 200">
+      <path d="M30 150 L 150 30 C 168 48 178 78 174 108 C 170 128 158 144 140 150 Z"/>
+      <path d="M58 150 L 150 58"/>
+      <path d="M20 162 h190 M34 162 c0 14 14 22 36 22 h70 c22 0 36 -8 36 -22"/>
+    </symbol>
+    <symbol id="m-mortar" viewBox="0 0 200 220">
+      <path d="M40 110 h120 M48 110 c-2 44 22 72 52 72 s54 -28 52 -72"/>
+      <path d="M60 192 h80"/>
+      <path d="M118 96 L 158 28 C 164 18 178 22 176 34 L 150 102"/>
+    </symbol>
+  </defs>
+</svg>
 
 <header class="nav">
   <a class="brand" href="/">
@@ -37,28 +83,12 @@
 <section class="hero" data-rotation data-interval="5000" data-imgw="720">
 
   <!-- atmosphere: hand-drawn line-art at 4% — never competes with content -->
-  <svg class="motif motif-leaf" viewBox="0 0 220 320" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-    <path d="M110 12 C 178 70 196 170 168 240 C 150 286 128 306 110 310 C 92 306 70 286 52 240 C 24 170 42 70 110 12 Z"/>
-    <path d="M110 24 V 304"/>
-    <path d="M110 70 C 132 76 152 92 164 112 M110 70 C 88 76 68 92 56 112"/>
-    <path d="M110 130 C 134 136 156 152 168 174 M110 130 C 86 136 64 152 52 174"/>
-    <path d="M110 190 C 130 196 148 210 158 228 M110 190 C 90 196 72 210 62 228"/>
-  </svg>
-  <svg class="motif motif-steam" viewBox="0 0 220 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-    <path d="M30 200 h160 M40 200 c0 34 28 52 70 52 s70 -18 70 -52"/>
-    <path d="M76 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
-    <path d="M110 174 c-9 -16 9 -23 0 -43 c-9 -18 9 -25 0 -41"/>
-    <path d="M144 168 c-8 -14 8 -20 0 -38 c-8 -16 8 -22 0 -36"/>
-  </svg>
-  <svg class="motif motif-rangoli" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-    <path d="M0 200 A200 200 0 0 1 200 200" transform="rotate(180 100 100)"/>
-    <path d="M0 0 C 40 30 60 30 100 0 M0 0 C 30 40 30 60 0 100"/>
-    <path d="M0 0 C 56 44 84 44 140 0 M0 0 C 44 56 44 84 0 140"/>
-    <circle cx="22" cy="22" r="3"/><circle cx="58" cy="14" r="3"/><circle cx="14" cy="58" r="3"/>
-  </svg>
+  <svg class="motif" style="width:230px;left:-60px;bottom:-50px;transform:rotate(18deg)" viewBox="0 0 220 320" aria-hidden="true"><use href="#m-leaf"/></svg>
+  <svg class="motif" style="width:200px;right:-30px;top:-20px" viewBox="0 0 220 260" aria-hidden="true"><use href="#m-steam"/></svg>
+  <svg class="motif motif-mid" style="width:170px;left:34%;top:-40px" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rangoli"/></svg>
 
   <!-- LEFT — live macro display (real per-serving values, NIN-computed) -->
-  <aside class="hero-macros" aria-live="polite">
+  <aside class="hero-macros land" style="--ld:.45s" aria-live="polite">
     <span class="hm-state" data-rot-state>Andhra Pradesh</span>
     <span class="hm-native" data-rot-native>పెసరట్టు</span>
     <span class="hm-name" data-rot-name>Pesarattu</span>
@@ -73,18 +103,18 @@
 
   <!-- CENTER — the message -->
   <div class="hero-copy">
-    <span class="eyebrow">Built around regional Indian cuisine</span>
-    <h1>Your food.<br>Your macros.<br>Your week.</h1>
-    <p class="lede">Know the nutrition in the meals you already eat.
+    <span class="eyebrow land" style="--ld:.05s">Built around regional Indian cuisine</span>
+    <h1 class="land" style="--ld:.14s">Your food.<br>Your macros.<br>Your week.</h1>
+    <p class="lede land" style="--ld:.24s">Know the nutrition in the meals you already eat.
       Plan healthier weeks without changing your culture.</p>
-    <div class="cta-row">
+    <div class="cta-row land" style="--ld:.34s">
       <a class="btn btn-primary" href="waitlist.html">Join Waitlist</a>
       <a class="btn btn-ghost" href="#how">How It Works</a>
     </div>
   </div>
 
   <!-- RIGHT — rotating regional dish -->
-  <div class="hero-food">
+  <div class="hero-food land land-card" style="--ld:.3s">
     <div class="glow"></div>
     <figure class="food-card">
       <img data-rot-img-a class="on" src="" alt="" loading="eager">
@@ -93,14 +123,18 @@
   </div>
 </section>
 
-<!-- SECTION 2 — regional showcase -->
+<!-- SECTION 2 — regional showcase: dish names in their own scripts -->
 <section id="food" class="sec sec-food">
+  <svg class="motif" style="width:150px;left:-30px;top:60px;transform:rotate(-24deg)" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-chilli"/></svg>
+  <svg class="motif" style="width:160px;right:-20px;bottom:30px;transform:rotate(14deg)" viewBox="0 0 200 240" aria-hidden="true"><use href="#m-coriander"/></svg>
   <h2 class="sec-title reveal">India's food.<br>One place.</h2>
-  <div class="gallery" data-gallery aria-label="Regional dishes across India"></div>
+  <div class="ticker" data-ticker aria-label="Regional dishes across India, in their own scripts"></div>
 </section>
 
 <!-- SECTION 3 — weekly planning -->
 <section id="how" class="sec sec-week alt">
+  <svg class="motif" style="width:210px;right:-40px;top:40px;transform:rotate(8deg)" viewBox="0 0 240 200" aria-hidden="true"><use href="#m-dosa"/></svg>
+  <svg class="motif" style="width:150px;left:-44px;bottom:-30px;transform:rotate(-150deg)" viewBox="0 0 220 320" aria-hidden="true"><use href="#m-leaf"/></svg>
   <h2 class="sec-title reveal">Plan your week with what you already eat.</h2>
   <p class="sec-sub reveal" style="--d:.06s">No imported meal plans. No mystery ingredients.</p>
   <div class="week reveal" style="--d:.1s">
@@ -115,6 +149,8 @@
 
 <!-- SECTION 4 — personalized guidance -->
 <section class="sec sec-goals">
+  <svg class="motif" style="width:170px;right:6%;bottom:-20px;transform:rotate(-10deg)" viewBox="0 0 200 220" aria-hidden="true"><use href="#m-mortar"/></svg>
+  <svg class="motif" style="width:140px;left:-10px;top:-10px" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-rangoli"/></svg>
   <h2 class="sec-title reveal">Built around your goals.</h2>
   <p class="sec-sub reveal" style="--d:.06s">Lose weight. Gain muscle. Eat healthier.<br>Get a plan built around your food.</p>
   <div class="flow">
@@ -128,6 +164,8 @@
 
 <!-- SECTION 5 — pricing -->
 <section id="pricing" class="sec sec-pricing alt">
+  <svg class="motif" style="width:140px;left:4%;top:50px;transform:rotate(20deg)" viewBox="0 0 200 240" aria-hidden="true"><use href="#m-coriander"/></svg>
+  <svg class="motif" style="width:120px;right:5%;bottom:40px;transform:rotate(160deg)" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-chilli"/></svg>
   <h2 class="sec-title reveal">Simple pricing.</h2>
   <div class="plans">
     <div class="plan reveal">
@@ -150,6 +188,8 @@
 
 <!-- FINAL CTA -->
 <section class="cta-final">
+  <svg class="motif" style="width:190px;left:8%;top:50%;transform:rotate(-6deg)" viewBox="0 0 220 260" aria-hidden="true"><use href="#m-steam"/></svg>
+  <svg class="motif" style="width:150px;right:7%;bottom:60px;transform:rotate(24deg)" viewBox="0 0 220 320" aria-hidden="true"><use href="#m-leaf"/></svg>
   <h2 class="reveal">Be first at the table.</h2>
   <p class="reveal" style="--d:.06s">We're opening Svas region by region.<br>Join now and we'll save you a seat.</p>
   <a class="btn btn-primary btn-lg reveal" style="--d:.12s" href="waitlist.html">Join Waitlist</a>
@@ -192,6 +232,8 @@
 
 <script>
 (function () {
+  // entrance safety net — if hero.js ever fails, never leave .land content hidden
+  setTimeout(function () { document.body.classList.add("landed"); }, 10000);
   var els = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) { els.forEach(function(e){e.classList.add("in");}); return; }
   var io = new IntersectionObserver(function (entries) {
