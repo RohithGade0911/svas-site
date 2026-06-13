@@ -87,7 +87,7 @@
 
       if (!l) return apply();
       l.src = img(d.img, w);
-      l.alt = d.name + " — " + d.state;
+      l.alt = d.name + " — " + d.state + ", " + d.kcal + " kcal per serving";
       if (instant || reduced) return apply();
       // hold the text until the photo is decoded, then start both together
       // (images are preloaded after first paint, so this is normally instant)

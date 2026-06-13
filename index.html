@@ -5,10 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Svas — The health app built around Indian food</title>
 <meta name="description" content="Finally, a nutrition app that understands Indian food. Know the macros in the meals you already eat — from pesarattu to rajma chawal — and plan healthier weeks without changing your culture.">
+<link rel="canonical" href="https://www.svas.life/">
+<link rel="alternate" hreflang="en-in" href="https://www.svas.life/">
+<link rel="alternate" hreflang="x-default" href="https://www.svas.life/">
+<meta name="geo.region" content="IN">
+<meta name="geo.placename" content="India">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:site_name" content="Svas">
 <meta property="og:title" content="Svas — Your food. Your macros. Your week.">
 <meta property="og:description" content="Finally, a nutrition app that understands Indian food. Eat the food you grew up with. Know exactly what's in it.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://svas.life">
+<meta property="og:url" content="https://www.svas.life/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://www.svas.life/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Svas — the health app built around Indian food">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Svas — Your food. Your macros. Your week.">
+<meta name="twitter:description" content="Finally, a nutrition app that understands Indian food. Eat the food you grew up with. Know exactly what's in it.">
+<meta name="twitter:image" content="https://www.svas.life/assets/og-image.png">
+<meta name="twitter:image:alt" content="Svas — the health app built around Indian food">
+
 <meta name="theme-color" content="#2D6A2F">
 <link rel="icon" type="image/png" href="assets/Favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +40,103 @@
 <script src="assets/intro.js" defer></script>
 <script src="assets/rotation-data.js" defer></script>
 <script src="assets/hero.js" defer></script>
+
+<!-- Structured data: Organization + WebSite entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.svas.life/#organization",
+      "name": "Svas",
+      "url": "https://www.svas.life/",
+      "logo": "https://www.svas.life/assets/og-image.png",
+      "image": "https://www.svas.life/assets/og-image.png",
+      "email": "contact@svas.life",
+      "description": "Svas is an India-first nutrition and meal-planning app built around regional Indian cuisine, with macros computed from IFCT-2017 and reviewed by dietitians.",
+      "slogan": "The health app built around Indian food.",
+      "areaServed": { "@type": "Country", "name": "India" },
+      "foundingLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "addressCountry": "IN"
+        }
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.svas.life/#website",
+      "url": "https://www.svas.life/",
+      "name": "Svas",
+      "description": "Indian nutrition & meal-planning app — know the macros in regional Indian food and plan healthier weeks around what you already eat.",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://www.svas.life/#organization" }
+    }
+  ]
+}
+</script>
+
+<!-- Structured data: FAQ (mirrors the on-page FAQ section) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there a nutrition app that understands Indian food?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — that's exactly why we built Svas. Most nutrition apps default to Western foods and leave you guessing at a katori of dal or a plate of pesarattu. Svas is built around regional Indian cuisine, so you can log the food you already eat and see real macros for it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which regional cuisines does Svas cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Svas spans dishes from 28 states — from Andhra pesarattu and Tamil ven pongal to Punjabi rajma chawal, Gujarati dhokla and Bengali macher jhol. Each dish carries its name in its own script, because your food deserves to be called by its real name."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does Svas get its nutrition data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every macro in Svas is computed from IFCT-2017 — the Indian Food Composition Tables published by the National Institute of Nutrition — and reviewed by dietitians. We don't scrape numbers off the internet or guess; if a value isn't verified, it doesn't ship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Svas track macros and calories for home-cooked meals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Svas knows the ingredients and portions behind everyday home cooking, so you get per-serving protein, carbs, fat and calories for the meals you actually make — not a generic \"Indian curry\" estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Svas help with weight loss or muscle gain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Svas builds a weekly plan around your goal — whether that's losing weight, gaining muscle, or simply eating healthier — using the regional food you already love. No imported meal plans, no foods you'd never cook."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Svas cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Svas is free to know your food. Premium — which plans your whole week around it — is ₹99/month or ₹799/year, with a one-week free trial. Prices are in INR, taxes as applicable."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -75,6 +194,7 @@
     <a href="#food">The food</a>
     <a href="#how">How it works</a>
     <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary btn-sm" href="waitlist.html">Join waitlist</a>
 </header>
@@ -117,7 +237,7 @@
   <div class="hero-food land land-card" style="--ld:.3s">
     <div class="glow"></div>
     <figure class="food-card">
-      <img data-rot-img-a class="on" src="" alt="" loading="eager">
+      <img data-rot-img-a class="on" src="" alt="Pesarattu — Andhra Pradesh, 238 kcal per serving" loading="eager">
       <img data-rot-img-b src="" alt="" loading="eager">
     </figure>
   </div>
@@ -186,6 +306,60 @@
   <p class="micro center">Prices in INR, taxes as applicable. Payments secured by Razorpay.</p>
 </section>
 
+<!-- SECTION 6 — FAQ (real answers + SEO surface) -->
+<style>
+  .sec-faq .faq { max-width: 760px; margin: 30px auto 0; text-align: left; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item summary {
+    cursor: pointer; list-style: none; position: relative;
+    padding: 22px 40px 22px 0;
+    font-family: "Fraunces", Georgia, serif; font-weight: 600;
+    font-size: 1.12rem; line-height: 1.35; color: var(--text);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; position: absolute; right: 4px; top: 20px;
+    font-size: 1.5rem; font-weight: 400; line-height: 1; color: var(--green);
+    transition: transform var(--m-med) var(--ease);
+  }
+  .faq-item[open] summary::after { content: "\2013"; }
+  .faq-item p {
+    margin: 0 0 22px; padding-right: 40px; max-width: 64ch;
+    color: var(--muted); line-height: 1.65; font-size: 1rem;
+  }
+</style>
+<section id="faq" class="sec sec-faq">
+  <svg class="motif" style="width:150px;left:-26px;top:40px;transform:rotate(-12deg)" viewBox="0 0 200 240" aria-hidden="true"><use href="#m-coriander"/></svg>
+  <svg class="motif" style="width:140px;right:-18px;bottom:20px;transform:rotate(150deg)" viewBox="0 0 220 320" aria-hidden="true"><use href="#m-leaf"/></svg>
+  <h2 class="sec-title reveal">Questions, answered.</h2>
+  <div class="faq reveal" style="--d:.06s">
+    <details class="faq-item" open>
+      <summary>Is there a nutrition app that understands Indian food?</summary>
+      <p>Yes — that's exactly why we built Svas. Most nutrition apps default to Western foods and leave you guessing at a katori of dal or a plate of pesarattu. Svas is built around regional Indian cuisine, so you can log the food you already eat and see real macros for it.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Which regional cuisines does Svas cover?</summary>
+      <p>Svas spans dishes from 28 states — from Andhra pesarattu and Tamil ven pongal to Punjabi rajma chawal, Gujarati dhokla and Bengali macher jhol. Each dish carries its name in its own script, because your food deserves to be called by its real name.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Where does Svas get its nutrition data?</summary>
+      <p>Every macro in Svas is computed from IFCT-2017 — the Indian Food Composition Tables published by the National Institute of Nutrition — and reviewed by dietitians. We don't scrape numbers off the internet or guess; if a value isn't verified, it doesn't ship.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can Svas track macros and calories for home-cooked meals?</summary>
+      <p>Yes. Svas knows the ingredients and portions behind everyday home cooking, so you get per-serving protein, carbs, fat and calories for the meals you actually make — not a generic "Indian curry" estimate.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Does Svas help with weight loss or muscle gain?</summary>
+      <p>Svas builds a weekly plan around your goal — whether that's losing weight, gaining muscle, or simply eating healthier — using the regional food you already love. No imported meal plans, no foods you'd never cook.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How much does Svas cost?</summary>
+      <p>Svas is free to know your food. Premium — which plans your whole week around it — is ₹99/month or ₹799/year, with a one-week free trial. Prices are in INR, taxes as applicable.</p>
+    </details>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="cta-final">
   <svg class="motif" style="width:190px;left:8%;top:50%;transform:rotate(-6deg)" viewBox="0 0 220 260" aria-hidden="true"><use href="#m-steam"/></svg>
@@ -208,6 +382,7 @@
       <a href="#food">The food</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a href="https://app.svas.life">Open the app</a>
     </div>
     <div class="foot-col">
