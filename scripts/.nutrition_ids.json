@@ -1,0 +1,394 @@
+[
+ {
+  "slug": "pesarattu",
+  "id": "tel_pesarattu",
+  "name": "Pesarattu",
+  "bucket": "Andhra",
+  "native": "పెసరట్టు"
+ },
+ {
+  "slug": "pulihora-tamarind-rice",
+  "id": "tel_pulihora",
+  "name": "Pulihora (tamarind rice)",
+  "bucket": "Andhra",
+  "native": "పులిహోర"
+ },
+ {
+  "slug": "hyderabadi-chicken-biryani",
+  "id": "tel_hyd_chicken_biryani",
+  "name": "Hyderabadi Chicken Dum Biryani",
+  "bucket": "Telangana",
+  "native": "హైదరాబాదీ చికెన్ బిర్యానీ"
+ },
+ {
+  "slug": "haleem",
+  "id": "tel_haleem",
+  "name": "Haleem",
+  "bucket": "Telangana",
+  "native": "హలీమ్"
+ },
+ {
+  "slug": "ven-pongal",
+  "id": "tn_ven_pongal",
+  "name": "Ven Pongal",
+  "bucket": "Tamil Nadu",
+  "native": "வெண் பொங்கல்"
+ },
+ {
+  "slug": "chicken-chettinad",
+  "id": "tn_chicken_chettinad",
+  "name": "Chicken Chettinad",
+  "bucket": "Tamil Nadu",
+  "native": "சிக்கன் செட்டிநாடு"
+ },
+ {
+  "slug": "bisi-bele-bath",
+  "id": "kn_bisi_bele_bath",
+  "name": "Bisi Bele Bath",
+  "bucket": "Karnataka",
+  "native": "ಬಿಸಿ ಬೇಳೆ ಬಾತ್"
+ },
+ {
+  "slug": "ragi-mudde",
+  "id": "kn_ragi_mudde",
+  "name": "Ragi Mudde",
+  "bucket": "Karnataka",
+  "native": "ರಾಗಿ ಮುದ್ದೆ"
+ },
+ {
+  "slug": "puttu",
+  "id": "kl_puttu",
+  "name": "Puttu",
+  "bucket": "Kerala",
+  "native": "പുട്ട്"
+ },
+ {
+  "slug": "kerala-fish-curry",
+  "id": "kl_meen_curry",
+  "name": "Meen Curry",
+  "bucket": "Kerala",
+  "native": "മീൻ കറി"
+ },
+ {
+  "slug": "dal-makhani",
+  "id": "pun_dal_makhani",
+  "name": "Dal Makhani",
+  "bucket": "Punjab",
+  "native": "ਦਾਲ ਮੱਖਣੀ"
+ },
+ {
+  "slug": "rajma-chawal",
+  "id": "pun_rajma_chawal",
+  "name": "Rajma Chawal",
+  "bucket": "Punjab",
+  "native": "ਰਾਜਮਾ ਚਾਵਲ"
+ },
+ {
+  "slug": "bajra-khichdi",
+  "id": "hr_bajra_khichdi",
+  "name": "Bajra Khichdi",
+  "bucket": "Haryana",
+  "native": "बाजरा खिचड़ी"
+ },
+ {
+  "slug": "haryanvi-kadhi",
+  "id": "hr_kadhi",
+  "name": "Haryanvi Kadhi",
+  "bucket": "Haryana",
+  "native": "कढ़ी"
+ },
+ {
+  "slug": "galouti-kebab",
+  "id": "up_galouti_kebab",
+  "name": "Galouti Kebab",
+  "bucket": "Uttar Pradesh",
+  "native": "गलौटी कबाब"
+ },
+ {
+  "slug": "bedmi-puri",
+  "id": "up_bedmi_puri",
+  "name": "Bedmi Puri",
+  "bucket": "Uttar Pradesh",
+  "native": "बेड़मी पूरी"
+ },
+ {
+  "slug": "dal-baati-churma",
+  "id": "rj_dal_baati_churma",
+  "name": "Dal Baati Churma",
+  "bucket": "Rajasthan",
+  "native": "दाल बाटी चूरमा"
+ },
+ {
+  "slug": "laal-maas",
+  "id": "rj_laal_maas",
+  "name": "Laal Maas",
+  "bucket": "Rajasthan",
+  "native": "लाल मांस"
+ },
+ {
+  "slug": "siddu",
+  "id": "hp_siddu",
+  "name": "Siddu",
+  "bucket": "Himachal Pradesh",
+  "native": "सिड्डू"
+ },
+ {
+  "slug": "chana-madra",
+  "id": "hp_chana_madra",
+  "name": "Chana Madra",
+  "bucket": "Himachal Pradesh",
+  "native": "चना मदरा"
+ },
+ {
+  "slug": "rogan-josh",
+  "id": "ks_rogan_josh",
+  "name": "Rogan Josh",
+  "bucket": "Kashmir",
+  "native": "रोगन जोश"
+ },
+ {
+  "slug": "kashmiri-dum-aloo",
+  "id": "ks_kashmiri_dum_aloo",
+  "name": "Kashmiri Dum Aloo",
+  "bucket": "Kashmir",
+  "native": "कश्मीरी दम आलू"
+ },
+ {
+  "slug": "aloo-ke-gutke",
+  "id": "uk_aloo_gutke",
+  "name": "Aloo ke Gutke",
+  "bucket": "Uttarakhand",
+  "native": "आलू के गुटके"
+ },
+ {
+  "slug": "bhatt-ki-churkani",
+  "id": "uk_bhatt_churkani",
+  "name": "Bhatt ki Churkani",
+  "bucket": "Uttarakhand",
+  "native": "भट्ट की चुड़कानी"
+ },
+ {
+  "slug": "macher-jhol",
+  "id": "bn_macher_jhol",
+  "name": "Macher Jhol",
+  "bucket": "West Bengal",
+  "native": "মাছের ঝোল"
+ },
+ {
+  "slug": "kosha-mangsho",
+  "id": "bn_kosha_mangsho",
+  "name": "Kosha Mangsho",
+  "bucket": "West Bengal",
+  "native": "কষা মাংস"
+ },
+ {
+  "slug": "litti-chokha",
+  "id": "bh_litti_chokha",
+  "name": "Litti Chokha",
+  "bucket": "Bihar",
+  "native": "लिट्टी चोखा"
+ },
+ {
+  "slug": "sattu-paratha",
+  "id": "bh_sattu_paratha",
+  "name": "Sattu Paratha",
+  "bucket": "Bihar",
+  "native": "सत्तू पराठा"
+ },
+ {
+  "slug": "dhuska",
+  "id": "jh_dhuska",
+  "name": "Dhuska",
+  "bucket": "Jharkhand",
+  "native": "धुस्का"
+ },
+ {
+  "slug": "marua-roti",
+  "id": "jh_marua_roti",
+  "name": "Marua Roti",
+  "bucket": "Jharkhand",
+  "native": "मड़ुआ रोटी"
+ },
+ {
+  "slug": "dalma",
+  "id": "od_dalma",
+  "name": "Dalma",
+  "bucket": "Odisha",
+  "native": "ଡାଲମା"
+ },
+ {
+  "slug": "pakhala-bhata",
+  "id": "od_pakhala_bhata",
+  "name": "Pakhala Bhata",
+  "bucket": "Odisha",
+  "native": "ପଖାଳ ଭାତ"
+ },
+ {
+  "slug": "khaman-dhokla",
+  "id": "gj_dhokla",
+  "name": "Khaman Dhokla",
+  "bucket": "Gujarat",
+  "native": "ઢોકળા"
+ },
+ {
+  "slug": "methi-thepla",
+  "id": "gj_thepla",
+  "name": "Methi Thepla",
+  "bucket": "Gujarat",
+  "native": "થેપલા"
+ },
+ {
+  "slug": "misal-pav",
+  "id": "mh_misal_pav",
+  "name": "Misal Pav",
+  "bucket": "Maharashtra",
+  "native": "मिसळ पाव"
+ },
+ {
+  "slug": "pav-bhaji",
+  "id": "mh_pav_bhaji",
+  "name": "Pav Bhaji",
+  "bucket": "Maharashtra",
+  "native": "पाव भाजी"
+ },
+ {
+  "slug": "goan-fish-curry",
+  "id": "ga_fish_curry",
+  "name": "Goan Fish Curry",
+  "bucket": "Goa",
+  "native": "माशाचें कालवण"
+ },
+ {
+  "slug": "pork-vindaloo",
+  "id": "ga_pork_vindaloo",
+  "name": "Pork Vindaloo",
+  "bucket": "Goa",
+  "native": "डुकराचें विंदालू"
+ },
+ {
+  "slug": "poha-jalebi",
+  "id": "mp_poha_jalebi",
+  "name": "Poha Jalebi",
+  "bucket": "Madhya Pradesh",
+  "native": "पोहा जलेबी"
+ },
+ {
+  "slug": "dal-bafla",
+  "id": "mp_dal_bafla",
+  "name": "Dal Bafla",
+  "bucket": "Madhya Pradesh",
+  "native": "दाल बाफला"
+ },
+ {
+  "slug": "chila",
+  "id": "cg_chila",
+  "name": "Chila",
+  "bucket": "Chhattisgarh",
+  "native": "चीला"
+ },
+ {
+  "slug": "fara-muthia",
+  "id": "cg_fara",
+  "name": "Fara (Muthia)",
+  "bucket": "Chhattisgarh",
+  "native": "फरा"
+ },
+ {
+  "slug": "masor-tenga",
+  "id": "as_masor_tenga",
+  "name": "Masor Tenga",
+  "bucket": "Assam",
+  "native": "মাছৰ টেঙা"
+ },
+ {
+  "slug": "til-pitha",
+  "id": "as_til_pitha",
+  "name": "Til Pitha",
+  "bucket": "Assam",
+  "native": "তিল পিঠা"
+ },
+ {
+  "slug": "eromba",
+  "id": "mn_eromba",
+  "name": "Eromba",
+  "bucket": "Manipur",
+  "native": "Eromba"
+ },
+ {
+  "slug": "nga-thongba",
+  "id": "mn_nga_thongba",
+  "name": "Nga Thongba",
+  "bucket": "Manipur",
+  "native": "Nga Thongba"
+ },
+ {
+  "slug": "jadoh",
+  "id": "ml_jadoh",
+  "name": "Jadoh",
+  "bucket": "Meghalaya",
+  "native": "Jadoh"
+ },
+ {
+  "slug": "dohneiiong",
+  "id": "ml_dohneiiong",
+  "name": "Dohneiiong",
+  "bucket": "Meghalaya",
+  "native": "Dohneiiong"
+ },
+ {
+  "slug": "awan-bangwi",
+  "id": "tr_awan_bangwi",
+  "name": "Awan Bangwi",
+  "bucket": "Tripura",
+  "native": "আওয়ান বাংউই"
+ },
+ {
+  "slug": "wahan-mosdeng",
+  "id": "tr_wahan_mosdeng",
+  "name": "Wahan Mosdeng (Pork)",
+  "bucket": "Tripura",
+  "native": "ওয়াহান মোসদেং"
+ },
+ {
+  "slug": "bai",
+  "id": "mz_bai",
+  "name": "Bai",
+  "bucket": "Mizoram",
+  "native": "Bai"
+ },
+ {
+  "slug": "vawksa-rep-smoked-pork",
+  "id": "mz_vawksa_rep",
+  "name": "Vawksa Rep (Smoked Pork)",
+  "bucket": "Mizoram",
+  "native": "Vawksa Rep"
+ },
+ {
+  "slug": "thukpa",
+  "id": "sk_thukpa",
+  "name": "Thukpa",
+  "bucket": "Sikkim",
+  "native": "थुक्पा"
+ },
+ {
+  "slug": "sael-roti",
+  "id": "sk_sael_roti",
+  "name": "Sael Roti",
+  "bucket": "Sikkim",
+  "native": "सेल रोटी"
+ },
+ {
+  "slug": "smoked-pork-axone",
+  "id": "ng_smoked_pork_axone",
+  "name": "Smoked Pork with Axone",
+  "bucket": "Nagaland",
+  "native": "Smoked Pork & Axone"
+ },
+ {
+  "slug": "galho",
+  "id": "ng_galho",
+  "name": "Galho",
+  "bucket": "Nagaland",
+  "native": "Galho"
+ }
+]
