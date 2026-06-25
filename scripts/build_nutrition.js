@@ -435,7 +435,6 @@ ${nf.nav}
     <div class="related-grid">
       <a class="related-card" href="/states/"><b>Food by state</b><span>Browse all 28 states</span></a>
       <a class="related-card" href="/blog/indian-plate-nutrition-2026/"><b>State of the Indian Plate</b><span>Our 2026 data study</span></a>
-      <a class="related-card" href="/compare/svas-vs-healthifyme/"><b>Svas vs HealthifyMe</b><span>An honest comparison</span></a>
     </div>
   </section>
 
@@ -729,7 +728,7 @@ async function main() {
     ...all.map((x) => ({ loc: `/nutrition/${x.sel.slug}/`, pr: "0.7", cf: "monthly" })),
     { loc: "/states/", pr: "0.8", cf: "weekly" },
     ...Object.keys(byState).sort().map((st) => ({ loc: `/states/${slugifyState(st)}/`, pr: "0.7", cf: "monthly" })),
-    { loc: "/compare/svas-vs-healthifyme/", pr: "0.7", cf: "monthly" },
+    // /compare/svas-vs-healthifyme/ held for app launch (see .vercelignore)
     { loc: "/blog/", pr: "0.6", cf: "weekly" },
     { loc: "/blog/indian-plate-nutrition-2026/", pr: "0.7", cf: "monthly" },
   ];
