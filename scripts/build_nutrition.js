@@ -125,7 +125,7 @@ function navFooter() {
   </div>
   <div class="foot-bot">
     <span>© 2026 Svas. All rights reserved.</span>
-    <span class="note">Nutrition values are estimates computed from IFCT-2017, reviewed by dietitians — informational, not medical advice.</span>
+    <span class="note">Nutrition values are estimates computed from IFCT-2017 and reviewed by dietitians. Informational, not medical advice.</span>
   </div>
 </footer>`,
   };
@@ -134,7 +134,7 @@ function navFooter() {
 function buildDish(sel, dishes, macros, ingMap, ingNames, imgs) {
   const d = dishes[sel.id], m = macros[sel.id];
   if (!d || !m) throw new Error(sel.id + ": missing in CSVs");
-  const name = NAME_OVERRIDE[sel.slug] || clean(d.display_name);
+  const name = clean(NAME_OVERRIDE[sel.slug] || sel.name || d.display_name);
   const state = STATE[sel.bucket] || sel.bucket;
   const zone = ZONE_OF[state];
   const meal = (m.meal_type || d.meal_type || "").toLowerCase();
@@ -153,13 +153,13 @@ function buildDish(sel, dishes, macros, ingMap, ingNames, imgs) {
   const pct = ni(m.protein_pct_kcal);
   const faq = [
     [`How many calories are in ${name}?`,
-      `One serving of ${name} (${ni(m.serving_g)}g) has ${ni(m.kcal)} calories — that's ${ni(m.kcal_100g)} calories per 100g.`],
+      `One serving of ${name} (${ni(m.serving_g)}g) has ${ni(m.kcal)} calories. That works out to ${ni(m.kcal_100g)} calories per 100g.`],
     [`How much protein is in ${name}?`,
       `A serving of ${name} has ${n1(m.protein_g)}g of protein, about ${pct}% of its calories.`],
     [`Is ${name} vegetarian?`,
-      isVeg ? `Yes — ${name} is a ${diet === "vegan" ? "vegan" : "vegetarian"} dish.`
-        : diet === "egg" ? `No — ${name} contains egg, so it's not vegetarian.`
-        : `No — ${name} is a non-vegetarian dish.`],
+      isVeg ? `Yes. ${name} is a ${diet === "vegan" ? "vegan" : "vegetarian"} dish.`
+        : diet === "egg" ? `No. ${name} contains egg, so it is not vegetarian.`
+        : `No. ${name} is a non-vegetarian dish.`],
     [`What is ${name} made of?`,
       topIng.length ? `${name} is made with ${topIng.slice(0, -1).join(", ")}${topIng.length > 1 ? " and " : ""}${topIng[topIng.length - 1]}.` : `${name} is a traditional ${state} dish.`],
     [`What are the macros in ${name}?`,
@@ -198,7 +198,7 @@ function renderPage(x, related) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(name)} Calories &amp; Nutrition — Per-Serving Macros | Svas</title>
+<title>${esc(name)} Calories, Protein &amp; Macros Per Serving | Svas</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${x.url}">
 <link rel="alternate" hreflang="en-in" href="${x.url}">
@@ -206,15 +206,15 @@ function renderPage(x, related) {
 <meta name="geo.region" content="IN">
 <meta name="geo.placename" content="India">
 <meta property="og:site_name" content="Svas">
-<meta property="og:title" content="${esc(name)} Calories &amp; Nutrition — ${ni(m.kcal)} kcal, ${n1(m.protein_g)}g protein per serving">
+<meta property="og:title" content="${esc(name)} nutrition: ${ni(m.kcal)} kcal, ${n1(m.protein_g)}g protein per serving">
 <meta property="og:description" content="The full IFCT-2017 nutrition breakdown for ${esc(name)}, a ${esc(state)} dish. Macros, micros and ingredients.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="${x.url}">
 <meta property="og:locale" content="en_IN">
 <meta property="og:image" content="${esc(og)}">
-<meta property="og:image:alt" content="${esc(name)} — ${esc(state)} dish">
+<meta property="og:image:alt" content="${esc(name)}, a ${esc(state)} dish">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${esc(name)} Calories &amp; Nutrition — ${ni(m.kcal)} kcal per serving">
+<meta name="twitter:title" content="${esc(name)} nutrition: ${ni(m.kcal)} kcal per serving">
 <meta name="twitter:description" content="Full IFCT-2017 nutrition breakdown for ${esc(name)}.">
 <meta name="twitter:image" content="${esc(og)}">
 <meta name="theme-color" content="#2D6A2F">
@@ -245,15 +245,15 @@ ${nf.nav}
     <div>
       <span class="nut-state">${esc(state)}</span>
       ${native ? `<span class="nut-native">${esc(native)}</span>` : ""}
-      <h1>${esc(name)} — Calories &amp; Nutrition</h1>
-      <p class="nut-sub">${esc(name)} is a ${x.isVeg ? "vegetarian " : ""}${x.mealNoun} from ${esc(state)} — here's exactly what's in one serving.</p>
+      <h1>${esc(name)} Calories &amp; Nutrition</h1>
+      <p class="nut-sub">${esc(name)} is a ${x.isVeg ? "vegetarian " : ""}${x.mealNoun} from ${esc(state)}. These are the macros for one home-cooked serving.</p>
       <p class="nut-cite">Every value computed from IFCT-2017.</p>
       <div class="nut-chips">
         ${chips.map((c) => `<span class="nut-chip">${esc(c)}</span>`).join("\n        ")}
       </div>
     </div>
     <figure class="nut-photo">
-      <img src="${esc(hero)}" alt="${esc(name)} — ${esc(state)} dish, ${ni(m.kcal)} kcal per serving" width="760" height="570" loading="eager">
+      <img src="${esc(hero)}" alt="${esc(name)}, a ${esc(state)} dish, ${ni(m.kcal)} kcal per serving" width="760" height="570" loading="eager">
     </figure>
   </section>
 
@@ -310,7 +310,7 @@ ${nf.nav}
     <div class="ing-list">
       ${x.ingDisp.map((i) => `<span class="ing">${esc(i.name)} <b>${esc(i.g)}g</b></span>`).join("\n      ")}
     </div>
-    <p class="ing-note">Grams for the full recipe (${ni(m.servings)} servings). Macros above are the per-serving sum of each ingredient's IFCT-2017 value — never estimated.</p>
+    <p class="ing-note">Grams for the full recipe (${ni(m.servings)} servings). Macros above are the per-serving sum of each ingredient's IFCT-2017 value, never an estimate.</p>
   </section>
 
   <section class="np-sec">
@@ -322,12 +322,12 @@ ${nf.nav}
 
   <section class="nut-cta">
     <h2>Plan your week around ${esc(name)}</h2>
-    <p>Svas builds a weekly plan from 3,000+ regional dishes across 28 states — with the recipe, portions and macros, around your goal.</p>
+    <p>Svas builds a weekly plan from 3,000+ regional dishes across 28 states, with the recipe, portions and macros, around your goal.</p>
     <a class="btn btn-primary btn-lg" href="/waitlist.html">Join the waitlist</a>
   </section>
 
   <section class="np-sec nut-faq">
-    <h2>${esc(name)} — frequently asked</h2>
+    <h2>${esc(name)}: common questions</h2>
     ${x.faq.map(([q, a], i) => `<details class="faq-item"${i === 0 ? " open" : ""}>
       <summary>${esc(q)}</summary>
       <p>${esc(a)}</p>
@@ -342,7 +342,7 @@ ${nf.nav}
   </section>` : ""}
 
   <p class="src-note">
-    Nutrition values are computed from <b>IFCT-2017</b> (Indian Food Composition Tables, National Institute of Nutrition) as the per-serving sum of each ingredient's per-100g value, and reviewed by dietitians. Figures are estimates for a standard home recipe and will vary with portion and preparation. Informational only — not medical or dietary advice.
+    Nutrition values are computed from <b>IFCT-2017</b> (Indian Food Composition Tables, National Institute of Nutrition) as the per-serving sum of each ingredient's per-100g value, and reviewed by dietitians. Figures are estimates for a standard home recipe and will vary with portion and preparation. Informational only, not medical or dietary advice.
   </p>
 
 </main>
@@ -386,15 +386,15 @@ function renderIndex(all) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Indian Food Nutrition &amp; Calories — 28 States | Svas</title>
-<meta name="description" content="Calories, protein and macros for iconic Indian dishes from all 28 states — computed from IFCT-2017. From pesarattu to rajma chawal, browse nutrition for the food you actually eat.">
+<title>Indian Food Nutrition &amp; Calories by State (28 States) | Svas</title>
+<meta name="description" content="Calories, protein and macros for iconic Indian dishes from all 28 states, computed from IFCT-2017. From pesarattu to rajma chawal, browse the nutrition behind regional Indian food.">
 <link rel="canonical" href="${SITE}/nutrition/">
 <link rel="alternate" hreflang="en-in" href="${SITE}/nutrition/">
 <link rel="alternate" hreflang="x-default" href="${SITE}/nutrition/">
 <meta name="geo.region" content="IN">
 <meta name="geo.placename" content="India">
 <meta property="og:site_name" content="Svas">
-<meta property="og:title" content="Indian Food Nutrition &amp; Calories — 28 States">
+<meta property="og:title" content="Indian Food Nutrition &amp; Calories by State (28 States)">
 <meta property="og:description" content="Calories, protein and macros for iconic regional Indian dishes, computed from IFCT-2017.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE}/nutrition/">
@@ -426,7 +426,7 @@ ${nf.nav}
   </nav>
   <header class="idx-head">
     <h1>Indian food nutrition, by state</h1>
-    <p class="nut-sub">Real calories, protein and macros for the dishes India actually eats — from ${all.length} regional favourites across 28 states. Every value computed from IFCT-2017 and reviewed by dietitians.</p>
+    <p class="nut-sub">Real calories, protein and macros for ${all.length} regional Indian dishes across 28 states. Every value computed from IFCT-2017 and reviewed by dietitians.</p>
   </header>
   ${zones}
 
@@ -482,8 +482,8 @@ async function main() {
   }
   fs.writeFileSync(path.join(outDir, "index.html"), renderIndex(all));
 
-  // sitemap.xml — static pages + nutrition hub + 56 dish pages
-  const today = "2026-06-13";
+  // sitemap.xml: static pages + nutrition hub + all dish pages
+  const today = "2026-06-25";
   const statics = [
     ["/", "1.0", "weekly"], ["/waitlist.html", "0.9", "weekly"],
     ["/legal/", "0.3", "yearly"], ["/legal/privacy.html", "0.3", "yearly"],
