@@ -430,6 +430,227 @@ ${nf.nav}
   </header>
   ${zones}
 
+  <section class="np-sec">
+    <h2>Go deeper</h2>
+    <div class="related-grid">
+      <a class="related-card" href="/states/"><b>Food by state</b><span>Browse all 28 states</span></a>
+      <a class="related-card" href="/blog/indian-plate-nutrition-2026/"><b>State of the Indian Plate</b><span>Our 2026 data study</span></a>
+      <a class="related-card" href="/compare/svas-vs-healthifyme/"><b>Svas vs HealthifyMe</b><span>An honest comparison</span></a>
+    </div>
+  </section>
+
+  <section class="nut-cta">
+    <h2>Know your food. Plan your week.</h2>
+    <p>Svas turns these numbers into a weekly plan built around the regional food you already love.</p>
+    <a class="btn btn-primary btn-lg" href="/waitlist.html">Join the waitlist</a>
+  </section>
+</main>
+
+${nf.foot}
+
+</body>
+</html>
+`;
+}
+
+const slugifyState = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function renderState(state, dishes) {
+  const zone = ZONE_OF[state];
+  const slug = slugifyState(state);
+  const url = `${SITE}/states/${slug}/`;
+  const nf = navFooter();
+  const sorted = dishes.slice().sort((a, b) => b.protein - a.protein);
+  const avgKcal = Math.round(dishes.reduce((s, x) => s + x.kcal, 0) / dishes.length);
+  const avgProt = (dishes.reduce((s, x) => s + parseFloat(x.protein), 0) / dishes.length).toFixed(1);
+  const top = sorted.slice(0, 4).map((x) => x.name);
+  const desc = `Calories, protein and macros for ${dishes.length} ${state} dishes, each computed from IFCT-2017. A typical serving averages ${avgKcal} kcal and ${avgProt}g protein. Browse the nutrition behind ${state} food.`;
+  const itemList = {
+    "@context": "https://schema.org", "@type": "ItemList", name: `${state} food nutrition`,
+    itemListElement: sorted.map((x, i) => ({ "@type": "ListItem", position: i + 1, name: x.name, url: x.url })),
+  };
+  const breadcrumb = {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
+      { "@type": "ListItem", position: 2, name: "States", item: SITE + "/states/" },
+      { "@type": "ListItem", position: 3, name: state, item: url },
+    ],
+  };
+  const faq = [
+    [`What are the most popular dishes from ${state}?`,
+      `Well-known ${state} dishes include ${top.slice(0, -1).join(", ")} and ${top[top.length - 1]}. You can see the full per-serving nutrition for each on its own page.`],
+    [`How many calories are in ${state} food?`,
+      `Across the ${state} dishes in our dataset, a typical serving averages ${avgKcal} calories and ${avgProt}g of protein. Individual dishes vary, so each one has its own breakdown.`],
+    [`Where does the nutrition data come from?`,
+      `Every value is computed from IFCT-2017, the Indian Food Composition Tables from the National Institute of Nutrition, as the per-serving sum of each ingredient, and reviewed by a dietitian.`],
+  ];
+  const faqLd = {
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+  };
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(state)} Food: Calories &amp; Nutrition for ${dishes.length} Dishes | Svas</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${url}">
+<link rel="alternate" hreflang="en-in" href="${url}">
+<link rel="alternate" hreflang="x-default" href="${url}">
+<meta name="geo.region" content="IN">
+<meta name="geo.placename" content="India">
+<meta property="og:site_name" content="Svas">
+<meta property="og:title" content="${esc(state)} food: calories &amp; nutrition for ${dishes.length} regional dishes">
+<meta property="og:description" content="IFCT-2017 macros for ${dishes.length} ${esc(state)} dishes. A typical serving averages ${avgKcal} kcal and ${avgProt}g protein.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${url}">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="${SITE}/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE}/assets/og-image.png">
+<meta name="theme-color" content="#2D6A2F">
+<link rel="icon" type="image/png" href="/assets/Favicon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="${HEAD_FONTS}" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/assets/nutrition.css?v=4">
+<script type="application/ld+json">
+${JSON.stringify(breadcrumb, null, 2)}
+</script>
+<script type="application/ld+json">
+${JSON.stringify(itemList, null, 2)}
+</script>
+<script type="application/ld+json">
+${JSON.stringify(faqLd, null, 2)}
+</script>
+</head>
+<body>
+
+${nf.nav}
+
+<main class="np">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span><a href="/states/">States</a><span class="sep">›</span><span>${esc(state)}</span>
+  </nav>
+  <header class="idx-head">
+    <span class="nut-state">${esc(zone)} India</span>
+    <h1>${esc(state)} food nutrition</h1>
+    <p class="nut-sub">Calories, protein and macros for ${dishes.length} dishes from ${esc(state)}. A typical serving averages ${avgKcal} kcal and ${avgProt}g protein. Every value is computed from IFCT-2017 and reviewed by dietitians.</p>
+  </header>
+
+  <section class="np-sec">
+    <h2>${esc(state)} dishes, ranked by protein</h2>
+    <div class="related-grid">
+      ${sorted.map((x) => `<a class="related-card" href="/nutrition/${x.sel.slug}/"><b>${esc(x.name)}</b><span>${x.protein}g protein · ${x.kcal} kcal</span></a>`).join("\n      ")}
+    </div>
+  </section>
+
+  <section class="nut-cta">
+    <h2>Plan your week around ${esc(state)} food</h2>
+    <p>Svas builds a weekly plan from 3,000+ regional dishes across 28 states, with the recipe, portions and macros, around your goal.</p>
+    <a class="btn btn-primary btn-lg" href="/waitlist.html">Join the waitlist</a>
+  </section>
+
+  <section class="np-sec nut-faq">
+    <h2>${esc(state)} food: common questions</h2>
+    ${faq.map(([q, a], i) => `<details class="faq-item"${i === 0 ? " open" : ""}>
+      <summary>${esc(q)}</summary>
+      <p>${esc(a)}</p>
+    </details>`).join("\n    ")}
+  </section>
+
+  <section class="np-sec">
+    <h2>Explore more</h2>
+    <div class="related-grid">
+      <a class="related-card" href="/nutrition/"><b>All nutrition pages</b><span>Every dish, by state</span></a>
+      <a class="related-card" href="/states/"><b>Food by state</b><span>Browse all 28 states</span></a>
+      <a class="related-card" href="/blog/indian-plate-nutrition-2026/"><b>State of the Indian Plate</b><span>Our 2026 data study</span></a>
+    </div>
+  </section>
+</main>
+
+${nf.foot}
+
+</body>
+</html>
+`;
+}
+
+function renderStatesIndex(byState) {
+  const nf = navFooter();
+  const states = Object.keys(byState);
+  const byZone = {};
+  for (const st of states) { const z = ZONE_OF[st]; (byZone[z] = byZone[z] || []).push(st); }
+  const itemList = {
+    "@context": "https://schema.org", "@type": "ItemList", name: "Indian food by state",
+    itemListElement: states.map((st, i) => ({ "@type": "ListItem", position: i + 1, name: st, url: `${SITE}/states/${slugifyState(st)}/` })),
+  };
+  const breadcrumb = {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
+      { "@type": "ListItem", position: 2, name: "States", item: SITE + "/states/" },
+    ],
+  };
+  const zones = ZONE_ORDER.filter((z) => byZone[z]).map((z) => `
+  <section class="np-sec">
+    <h2>${z} India</h2>
+    <div class="related-grid">
+      ${byZone[z].sort().map((st) => `<a class="related-card" href="/states/${slugifyState(st)}/"><b>${esc(st)}</b><span>${byState[st].length} dishes</span></a>`).join("\n      ")}
+    </div>
+  </section>`).join("\n");
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indian Food by State: Calories &amp; Nutrition Guides | Svas</title>
+<meta name="description" content="Browse Indian food nutrition state by state. Calories, protein and macros for regional dishes from all 28 states, each computed from IFCT-2017 and reviewed by dietitians.">
+<link rel="canonical" href="${SITE}/states/">
+<link rel="alternate" hreflang="en-in" href="${SITE}/states/">
+<link rel="alternate" hreflang="x-default" href="${SITE}/states/">
+<meta name="geo.region" content="IN">
+<meta name="geo.placename" content="India">
+<meta property="og:site_name" content="Svas">
+<meta property="og:title" content="Indian food by state: calories &amp; nutrition guides">
+<meta property="og:description" content="Regional Indian food nutrition, state by state, computed from IFCT-2017.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${SITE}/states/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="${SITE}/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE}/assets/og-image.png">
+<meta name="theme-color" content="#2D6A2F">
+<link rel="icon" type="image/png" href="/assets/Favicon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="${HEAD_FONTS}" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/assets/nutrition.css?v=4">
+<script type="application/ld+json">
+${JSON.stringify(breadcrumb, null, 2)}
+</script>
+<script type="application/ld+json">
+${JSON.stringify(itemList, null, 2)}
+</script>
+</head>
+<body>
+
+${nf.nav}
+
+<main class="np">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span><span>States</span>
+  </nav>
+  <header class="idx-head">
+    <h1>Indian food by state</h1>
+    <p class="nut-sub">Pick a state to see the calories, protein and macros behind its food. Every dish is computed from IFCT-2017 and reviewed by dietitians.</p>
+  </header>
+  ${zones}
+
   <section class="nut-cta">
     <h2>Know your food. Plan your week.</h2>
     <p>Svas turns these numbers into a weekly plan built around the regional food you already love.</p>
@@ -482,7 +703,19 @@ async function main() {
   }
   fs.writeFileSync(path.join(outDir, "index.html"), renderIndex(all));
 
-  // sitemap.xml: static pages + nutrition hub + all dish pages
+  // state hub pages: /states/<slug>/ + /states/ index
+  const byState = {};
+  for (const x of all) (byState[x.state] = byState[x.state] || []).push(x);
+  const statesDir = path.join(__dirname, "..", "states");
+  fs.mkdirSync(statesDir, { recursive: true });
+  for (const st of Object.keys(byState)) {
+    const dir = path.join(statesDir, slugifyState(st));
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), renderState(st, byState[st]));
+  }
+  fs.writeFileSync(path.join(statesDir, "index.html"), renderStatesIndex(byState));
+
+  // sitemap.xml: static pages + nutrition hub + all dish pages + states + content
   const today = "2026-06-25";
   const statics = [
     ["/", "1.0", "weekly"], ["/waitlist.html", "0.9", "weekly"],
@@ -494,6 +727,11 @@ async function main() {
     ...statics.map(([loc, pr, cf]) => ({ loc, pr, cf })),
     { loc: "/nutrition/", pr: "0.8", cf: "weekly" },
     ...all.map((x) => ({ loc: `/nutrition/${x.sel.slug}/`, pr: "0.7", cf: "monthly" })),
+    { loc: "/states/", pr: "0.8", cf: "weekly" },
+    ...Object.keys(byState).sort().map((st) => ({ loc: `/states/${slugifyState(st)}/`, pr: "0.7", cf: "monthly" })),
+    { loc: "/compare/svas-vs-healthifyme/", pr: "0.7", cf: "monthly" },
+    { loc: "/blog/", pr: "0.6", cf: "weekly" },
+    { loc: "/blog/indian-plate-nutrition-2026/", pr: "0.7", cf: "monthly" },
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -507,6 +745,6 @@ ${urls.map((u) => `  <url>
 `;
   fs.writeFileSync(path.join(__dirname, "..", "sitemap.xml"), sitemap);
 
-  console.log(`Built ${all.length} dish pages + /nutrition/ index + sitemap (${urls.length} urls)`);
+  console.log(`Built ${all.length} dish pages + ${Object.keys(byState).length} state pages + indexes + sitemap (${urls.length} urls)`);
 }
 main().catch((e) => { console.error(e); process.exit(1); });
