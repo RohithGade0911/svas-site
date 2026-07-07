@@ -1,7 +1,7 @@
-/* Svas marketing site — "the Apple of Indian nutrition" redesign (2026-06).
+/* Svas marketing site - "the Apple of Indian nutrition" redesign (2026-06).
    Brand: curry-leaf green, turmeric accent, rice-white. Fraunces headings +
    Plus Jakarta Sans body + Noto Sans <script> for native dish names.
-   Tokens match the app (theme.ts) — tokens-only styling per the UI/UX standard. */
+   Tokens match the app (theme.ts) - tokens-only styling per the UI/UX standard. */
 :root {
   --green: #2D6A2F; --green-dark: #1F4D21; --green-soft: #EEF5EE;
   --turmeric: #E8A020; --turmeric-deep: #C9871A; --accent-soft: #FBEFD6; --accent-line: #F0D79B;
@@ -11,7 +11,7 @@
   --r-sm: 12px; --r-md: 16px; --r-lg: 24px;
   --m-fast: .15s; --m-med: .25s; --m-slow: .35s;
   --m-count: .4s;  /* macro count-ups */
-  --m-hero: .7s;   /* food-card crossfade — the hero motion band */
+  --m-hero: .7s;   /* food-card crossfade - the hero motion band */
   --ease: cubic-bezier(.22, .9, .3, 1);
   --shadow-raised: 0 6px 14px rgba(42,28,16,.10);
   --shadow-glass: 0 14px 26px rgba(42,28,16,.14);
@@ -30,7 +30,7 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; letter-spacing: -0.5px; li
 a { color: var(--green); text-decoration: none; }
 img { max-width: 100%; display: block; }
 
-/* Buttons — hover lifts, press scales to .97 (same motion language as the app) */
+/* Buttons - hover lifts, press scales to .97 (same motion language as the app) */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   font-weight: 600; font-size: 15.5px; padding: 13px 22px; border-radius: 999px;
   border: 1.5px solid transparent; cursor: pointer;
@@ -72,13 +72,13 @@ img { max-width: 100%; display: block; }
   display: grid; grid-template-columns: .9fr 1.15fr 1fr;
   grid-template-areas: "macros copy food"; gap: 40px; align-items: center; }
 
-/* atmosphere — kitchen line-art at ~4%, never competing with content.
+/* atmosphere - kitchen line-art at ~4%, never competing with content.
    Sized/placed inline per instance; paths live in the <defs> motif library. */
 .motif { position: absolute; color: var(--green-dark); opacity: .04; pointer-events: none;
   z-index: 0; fill: none; stroke: currentColor; stroke-width: 2;
   stroke-linecap: round; stroke-linejoin: round; }
 
-/* left — live macro display */
+/* left - live macro display */
 .hero-macros { grid-area: macros; position: relative; z-index: 1; display: flex; flex-direction: column; }
 .hm-state { text-transform: uppercase; letter-spacing: 2.5px; font-size: 12px;
   font-weight: 700; color: var(--turmeric-deep); }
@@ -92,19 +92,19 @@ img { max-width: 100%; display: block; }
 .hm-stat span { font-size: 12.5px; color: var(--muted); letter-spacing: .4px; }
 .hm-per { font-size: 11.5px; color: var(--muted); opacity: .75; margin-top: 18px;
   text-transform: uppercase; letter-spacing: 1.5px; }
-/* rotating text swaps — fade out half the hero band, back in the other half,
+/* rotating text swaps - fade out half the hero band, back in the other half,
    so text starts and finishes exactly with the photo crossfade (700ms total) */
 [data-rot-state], [data-rot-native], [data-rot-name] {
   transition: opacity calc(var(--m-hero) / 2) var(--ease); }
 .rot-out { opacity: 0; }
 
-/* center — the message */
+/* center - the message */
 .hero-copy { grid-area: copy; position: relative; z-index: 1; text-align: center; }
 .hero-copy h1 { font-size: 60px; font-weight: 600; }
 .hero-copy .lede { margin: 22px auto 30px; max-width: 30ch; }
 .cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
-/* right — rotating regional dish */
+/* right - rotating regional dish */
 .hero-food { grid-area: food; position: relative; z-index: 1; }
 .glow { position: absolute; inset: -8%; margin: auto;
   background: radial-gradient(circle at 50% 40%, rgba(232,160,32,.28), transparent 62%),
@@ -118,13 +118,13 @@ img { max-width: 100%; display: block; }
   object-fit: contain; border-radius: var(--r-md);
   opacity: 0; transition: opacity var(--m-hero) var(--ease); }
 .food-card img.on { opacity: 1; }
-/* ambient life — a slow "kitchen at noon" float + breathing glow */
+/* ambient life - a slow "kitchen at noon" float + breathing glow */
 @keyframes float { from { transform: translateY(0); } to { transform: translateY(-9px); } }
 .food-card { animation: float 5.5s ease-in-out 1.8s infinite alternate; }
 @keyframes breathe { from { opacity: .7; } to { opacity: 1; } }
 .glow { animation: breathe 6s ease-in-out infinite alternate; }
 
-/* entrance — staggered fade-rise once the intro lifts (body.landed via hero.js) */
+/* entrance - staggered fade-rise once the intro lifts (body.landed via hero.js) */
 .land { opacity: 0; }
 body.landed .land { animation: land-rise .7s var(--ease) both; animation-delay: var(--ld, 0s); }
 body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
@@ -182,6 +182,18 @@ body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
   background: var(--green-soft); border-radius: 999px; padding: 11px 18px; }
 .week-goal span { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
 .week-goal b { color: var(--green-dark); font-size: 15px; }
+/* live weekly plan - state name sits centered above the card; a Week NN label +
+   a plain-text status inside; dishes reveal day by day */
+.week-caption { text-align: center; margin: 40px auto 12px; min-height: 30px; }
+.week-caption + .week { margin-top: 0; }
+.week-caption span { font-family: "Fraunces", serif; font-size: 23px; font-weight: 600; color: var(--green-dark); }
+.week-head { display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 14px; margin-bottom: 4px; border-bottom: 1px solid var(--border); }
+.wk-region { font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--green-dark); }
+.wk-status { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--muted); font-weight: 600; }
+.week-caption span, .wk-region, .wk-dish, .week-goal { transition: opacity var(--m-slow) var(--ease), transform var(--m-slow) var(--ease); }
+.wk-hidden { opacity: 0; transform: translateY(6px); }
 
 /* --- goals flow (minimal, draws downward) */
 .flow { display: flex; flex-direction: column; align-items: center; margin-top: 52px; }
@@ -214,11 +226,169 @@ body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
 .plan-line { font-family: "Fraunces", serif; font-size: 20px; color: var(--text); margin: 14px 0 22px; }
 .plan .btn { margin-top: auto; }
 
-/* --- final CTA — massive whitespace */
-.cta-final { position: relative; overflow: hidden; text-align: center; padding: 170px 24px 180px; }
-.cta-final h2 { font-size: 52px; font-weight: 600; }
-.cta-final p { color: var(--muted); font-size: 19px; margin: 20px 0 34px; }
-.cta-final .micro { margin-top: 22px; }
+/* centred eyebrow for the new bands */
+.center-eyebrow { display: block; text-align: center; margin-bottom: 14px; }
+
+/* --- Meet SvasAI (feature list + chat glimpse) */
+.sec-ai .sec-sub { margin-bottom: 8px; max-width: 50ch; }
+.ai-wrap { display: grid; grid-template-columns: auto auto; gap: 60px;
+  justify-content: center; align-items: center; margin-top: 56px; }
+.ai-eyebrow { text-transform: none; letter-spacing: .3px; font-size: 13px; }
+.ai-feats { display: flex; flex-direction: column; gap: 30px; max-width: 380px; }
+.ai-feat { text-align: left; }
+.ai-feat b { display: block; font-family: "Fraunces", serif; font-size: 20px;
+  font-weight: 600; color: var(--text); }
+.ai-feat > span { display: block; margin-top: 6px;
+  font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 33ch;
+  text-wrap: balance; }
+.ai-feat .nat { font-family: var(--font-native); font-weight: 600;
+  font-size: 15.5px; color: var(--text); }
+
+/* chat glimpse - a live, self-typing conversation shown on a phone */
+.ai-phone { position: relative; z-index: 0; width: 322px; flex: none; margin: 0 auto;
+  padding: 13px; border-radius: 54px;
+  background: linear-gradient(150deg, #2b2b30, #141417);
+  box-shadow: 0 34px 70px -26px rgba(42,28,16,.55),
+    inset 0 0 0 2px rgba(255,255,255,.06), inset 0 1px 1px rgba(255,255,255,.12); }
+/* soft warm halo behind the phone - same glow language as the hero food card */
+.ai-phone::before { content: ""; position: absolute; inset: -12%; z-index: -1;
+  border-radius: 60px; filter: blur(28px);
+  background: radial-gradient(circle at 50% 40%, rgba(232,160,32,.24), transparent 62%),
+              radial-gradient(circle at 60% 72%, rgba(45,106,47,.16), transparent 60%);
+  animation: breathe 6s ease-in-out infinite alternate; }
+.ai-island { position: absolute; top: 25px; left: 50%; transform: translateX(-50%);
+  width: 98px; height: 27px; background: #000; border-radius: 999px; z-index: 4; }
+.ai-screen { position: relative; height: 588px; border-radius: 42px; overflow: hidden;
+  display: flex; flex-direction: column; padding: 0 15px 13px;
+  background: linear-gradient(160deg, #FFFDF6, #F6EEDC); }
+.ai-statusbar { display: flex; align-items: center; justify-content: space-between;
+  padding: 15px 6px 5px; font-size: 13px; font-weight: 700; color: var(--text); }
+.sb-time { letter-spacing: .3px; }
+.sb-right { display: flex; align-items: center; gap: 7px; }
+.sb-ic { width: 17px; height: 11px; fill: var(--text); }
+.sb-batt { width: 22px; height: 11px; border-radius: 3px; position: relative;
+  border: 1.4px solid var(--text); opacity: .9; }
+.sb-batt::before { content: ""; position: absolute; inset: 1.5px; width: 72%;
+  background: var(--text); border-radius: 1px; }
+.sb-batt::after { content: ""; position: absolute; right: -3px; top: 3px;
+  width: 2px; height: 4px; background: var(--text); border-radius: 0 1px 1px 0; }
+.ai-chat-head { display: flex; align-items: center; gap: 9px; padding: 2px 4px 13px;
+  border-bottom: 1px solid var(--border); }
+.ai-chat-head .mark-img { width: 26px; height: 26px; }
+.ai-chat-head b { font-family: "Fraunces", serif; font-size: 17px; }
+.ai-dot { width: 7px; height: 7px; border-radius: 999px; background: #46A24A;
+  box-shadow: 0 0 0 0 rgba(70,162,74,.5); animation: aiPulse 2.4s ease-out infinite; }
+@keyframes aiPulse { 0% { box-shadow: 0 0 0 0 rgba(70,162,74,.45); }
+  70% { box-shadow: 0 0 0 6px rgba(70,162,74,0); } 100% { box-shadow: 0 0 0 0 rgba(70,162,74,0); } }
+
+/* bubbles stack from the bottom; older ones drift up under a soft top fade */
+.ai-bubbles { flex: 1; min-height: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; gap: 9px; padding: 16px 2px 4px; overflow: hidden;
+  transition: opacity var(--m-med) var(--ease);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 14%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent, #000 14%, #000 100%); }
+.ai-bubbles.fading { opacity: 0; }
+.ai-b { max-width: 84%; padding: 10px 14px; font-size: 14.5px; line-height: 1.5;
+  border-radius: 16px; white-space: normal; word-break: break-word;
+  font-family: "Plus Jakarta Sans", "Noto Sans Telugu", "Noto Sans Tamil",
+    "Noto Sans Kannada", "Noto Sans Devanagari", system-ui, sans-serif;
+  transition: opacity var(--m-slow) var(--ease), transform var(--m-slow) var(--ease); }
+.ai-b-user { align-self: flex-end; background: var(--green); color: #fff;
+  border-bottom-right-radius: 5px; }
+.ai-b-ai { align-self: flex-start; background: var(--card); color: var(--text);
+  border: 1px solid var(--border); border-bottom-left-radius: 5px; }
+.ai-b-enter { opacity: 0; transform: translateY(9px) scale(.98); }
+.ai-b-enter.in { opacity: 1; transform: none; }
+
+/* AI "typing…" three-dot indicator */
+.ai-typing { display: inline-flex; align-items: center; gap: 5px; padding: 13px 15px; }
+.ai-typing span { width: 7px; height: 7px; border-radius: 999px; background: var(--muted);
+  opacity: .45; animation: aiDot 1.2s infinite ease-in-out; }
+.ai-typing span:nth-child(2) { animation-delay: .16s; }
+.ai-typing span:nth-child(3) { animation-delay: .32s; }
+@keyframes aiDot { 0%, 65%, 100% { transform: translateY(0); opacity: .35; }
+  30% { transform: translateY(-4px); opacity: .9; } }
+
+/* fake input bar - the user's words type themselves in here, then send */
+.ai-inputbar { display: flex; align-items: center; gap: 10px; padding-top: 12px;
+  border-top: 1px solid var(--border); }
+.ai-input { flex: 1; min-width: 0; min-height: 20px; font-size: 14.5px; color: var(--text);
+  white-space: nowrap; overflow: hidden;
+  font-family: "Plus Jakarta Sans", "Noto Sans Telugu", "Noto Sans Tamil",
+    "Noto Sans Kannada", "Noto Sans Devanagari", system-ui, sans-serif; }
+.ai-input:empty::before { content: attr(data-ph); color: var(--muted); opacity: .7; }
+.ai-input::after { content: ""; display: inline-block; width: 2px; height: 15px;
+  background: var(--green); margin-left: 2px; vertical-align: -2px;
+  animation: aiCaret 1.1s step-end infinite; }
+@keyframes aiCaret { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+.ai-send { width: 34px; height: 34px; flex: none; border-radius: 999px;
+  background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; }
+.ai-send svg { width: 16px; height: 16px; }
+
+/* --- Built for your body (conditions + micros) */
+.sec-health .sec-sub.small { font-size: 15px; max-width: 52ch; margin-top: 26px; }
+.cond-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+  max-width: 640px; margin: 34px auto 0; }
+.cond-chip { position: relative; background: var(--card); border: 1px solid var(--border);
+  border-radius: 999px; padding: 11px 22px; font-size: 15.5px; font-weight: 600;
+  color: var(--green-dark); box-shadow: var(--shadow-raised); cursor: default; outline: none;
+  transition: transform var(--m-med) var(--ease); }
+.cond-chip:hover, .cond-chip:focus-visible, .cond-chip.open { transform: translateY(-2px); }
+/* hover/tap tooltip - a small dark bubble above the chip */
+.cond-chip::after { content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 12px);
+  transform: translate(-50%, 6px); white-space: nowrap;
+  background: var(--card); color: var(--green-dark); border: 1px solid var(--border);
+  font-size: 13px; font-weight: 600;
+  padding: 8px 13px; border-radius: 11px; box-shadow: var(--shadow-glass);
+  opacity: 0; pointer-events: none; z-index: 6;
+  transition: opacity var(--m-med) var(--ease), transform var(--m-med) var(--ease); }
+.cond-chip::before { content: ""; position: absolute; left: 50%; bottom: calc(100% + 7px);
+  transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--card);
+  opacity: 0; pointer-events: none; z-index: 7; transition: opacity var(--m-med) var(--ease);
+  filter: drop-shadow(0 1px 0 var(--border)); }
+/* "+4 more" - a quiet, static label (not hoverable, no tooltip) */
+.cond-more { color: var(--muted); background: transparent; border-style: dashed; }
+.cond-more:hover, .cond-more:focus-visible { transform: none; }
+.cond-more::after, .cond-more::before { content: none; display: none; }
+.cond-chip:hover::after, .cond-chip:focus-visible::after, .cond-chip.open::after { opacity: 1; transform: translate(-50%, 0); }
+.cond-chip:hover::before, .cond-chip:focus-visible::before, .cond-chip.open::before { opacity: 1; }
+
+/* --- pricing: billing toggle + 3-tier grid */
+.bill-toggle { display: inline-flex; gap: 4px; margin: 26px auto 0; padding: 5px;
+  background: var(--canvas); border: 1px solid var(--border); border-radius: 999px;
+  position: relative; z-index: 1; }
+.sec-pricing { text-align: center; }
+.bt-opt { display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  border: none; background: transparent; color: var(--muted);
+  font-family: inherit; font-weight: 600; font-size: 14.5px; padding: 9px 20px;
+  border-radius: 999px; transition: background var(--m-fast) var(--ease), color var(--m-fast) var(--ease); }
+.bt-opt.on { background: var(--card); color: var(--text); box-shadow: var(--shadow-raised); }
+.bt-save { font-size: 11px; font-weight: 700; letter-spacing: .4px; color: var(--turmeric-deep); }
+.bt-opt.on .bt-save { color: var(--turmeric-deep); }
+
+.plans-3 { grid-template-columns: repeat(3, minmax(0, 320px)); }
+.plan-feats { list-style: none; margin: 6px 0 24px; padding: 0; text-align: left; }
+.plan-feats li { position: relative; padding: 7px 0 7px 26px; font-size: 14px;
+  color: var(--muted); line-height: 1.45; border-bottom: 1px dashed var(--border); }
+.plan-feats li:last-child { border-bottom: none; }
+.plan-feats li::before { content: "✓"; position: absolute; left: 0; top: 7px;
+  color: var(--green); font-weight: 700; }
+.plan-feats li em { font-style: normal; color: var(--turmeric-deep); font-weight: 600; }
+.plan .plan-feats + .btn { margin-top: auto; }
+/* toggle-driven price visibility (annual is the default) */
+[data-price-annual], [data-alt-annual] { display: block; }
+[data-price-monthly], [data-alt-monthly] { display: none; }
+.plans-3[data-bill="monthly"] [data-price-annual],
+.plans-3[data-bill="monthly"] [data-alt-annual] { display: none; }
+.plans-3[data-bill="monthly"] [data-price-monthly] { display: block; }
+.plans-3[data-bill="monthly"] [data-alt-monthly] { display: block; }
+
+/* --- final CTA - massive whitespace */
+.cta-final { position: relative; overflow: hidden; text-align: center; padding: 104px 24px 116px;
+  background: radial-gradient(ellipse 68% 62% at 50% 42%, var(--green-soft), var(--bg) 72%); }
+.cta-final h2 { font-size: 46px; font-weight: 600; }
+.cta-final p { color: var(--muted); font-size: 18px; margin: 18px 0 30px; }
+.cta-final .micro { margin-top: 20px; }
 
 /* Footer */
 .foot { background: #15321A; color: rgba(255,255,255,.72); padding: 54px 24px 30px; }
@@ -236,7 +406,7 @@ body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
   border-top: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between;
   gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: rgba(255,255,255,.5); }
 
-/* Scroll-reveal — fade + slight rise, staggered via --d */
+/* Scroll-reveal - fade + slight rise, staggered via --d */
 .reveal { opacity: 0; transform: translateY(14px);
   transition: opacity var(--m-slow) var(--ease), transform var(--m-slow) var(--ease);
   transition-delay: var(--d, 0s); }
@@ -292,6 +462,12 @@ body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
   .btn, .plan, .tk-native, .tk-chip { transition: none; }
   .tk-row, .food-card, .glow { animation: none; }
   .food-card img { transition: none; }
+  .ai-dot, .ai-typing span, .ai-input::after { animation: none; }
+  .ai-b { transition: none; }
+  .ai-input::after { display: none; }
+  .ai-phone::before { animation: none; }
+  .week-caption span, .wk-region, .wk-dish, .week-goal, .cond-chip, .cond-chip::after, .cond-chip::before { transition: none; }
+  .wk-hidden { opacity: 1; transform: none; }
 }
 
 /* ============================================================ RESPONSIVE */
@@ -313,9 +489,14 @@ body.landed .land-card { animation-name: land-card; animation-duration: .9s; }
   .sec-title { font-size: 34px; }
   .tk-native { font-size: 22px; }
   .tk-item { padding: 2px 22px; }
-  .plans { grid-template-columns: 1fr; }
-  .cta-final { padding: 110px 24px 120px; }
-  .cta-final h2 { font-size: 38px; }
+  .plans, .plans-3 { grid-template-columns: 1fr; }
+  .ai-wrap { grid-template-columns: 1fr; gap: 34px; margin-top: 40px; justify-items: center; }
+  .ai-feats { max-width: none; }
+  .ai-feat > span { max-width: 46ch; }
+  .ai-phone { order: -1; }
+  .cond-chip { font-size: 14px; padding: 9px 16px; }
+  .cta-final { padding: 84px 24px 92px; }
+  .cta-final h2 { font-size: 36px; }
   .foot-top { grid-template-columns: 1fr 1fr; }
   .wl { grid-template-columns: 1fr; gap: 48px; padding-top: 36px; }
   .wl-pane { order: -1; max-width: none; }

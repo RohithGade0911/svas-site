@@ -1,6 +1,6 @@
-# robots.txt — svas.life
+# robots.txt - svas.life
 # Svas is an India-first regional nutrition & meal-planning app.
-# Everything here is public marketing content — crawl freely.
+# Everything here is public marketing content - crawl freely.
 
 User-agent: *
 Allow: /

@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /* Builds the /nutrition/<slug>/ per-dish SEO pages + the /nutrition/ hub.
  *
- * Sources (NEVER hand-edit the numbers — core rule: macros are NIN-computed):
+ * Sources (NEVER hand-edit the numbers - core rule: macros are NIN-computed):
  *   ../../food-database/dishes_mvp.csv                 native names, diet, health tags
  *   ../../food-database/layer3-dishes/dish_macros.csv  per-serving + per-100g macros (generated)
  *   ../../food-database/layer2-recipes/dish_ingredients.csv  gram-level ingredients
  *   ../../food-database/layer1-ingredients/ingredients.csv   ingredient display names
  *   Supabase catalog.dishes.image_url                  dish photos (public read)
  *
- * Selection: scripts/.nutrition_ids.json  (resolved dish_ids — 2 per state)
+ * Selection: scripts/.nutrition_ids.json  (resolved dish_ids - 2 per state)
  * Run from svas-site/:  node scripts/build_nutrition.js
  * Output is committed; scripts/ is .vercelignore'd (never served).
  */
@@ -16,7 +16,7 @@ const fs = require("fs");
 const path = require("path");
 
 const SUPABASE_URL = "https://jtschfacrjsynryiyyyk.supabase.co";
-const KEY = "sb_publishable_2uL2zVf_cpObToPtKODMZw_cH0c8TIe"; // publishable — safe
+const KEY = "sb_publishable_2uL2zVf_cpObToPtKODMZw_cH0c8TIe"; // publishable - safe
 const SITE = "https://www.svas.life";
 
 const SEL = require("./.nutrition_ids.json"); // [{slug,id,name,bucket,native}]
@@ -68,7 +68,7 @@ function byId(file, idCol) {
 
 // ---- helpers ----
 const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const clean = (n) => n.split(" (")[0].split(" / ")[0].split(" — ")[0].trim();
+const clean = (n) => n.split(" (")[0].split(" / ")[0].split(" - ")[0].trim();
 const cap = (s) => s ? s[0].toUpperCase() + s.slice(1) : s;
 const n1 = (v) => { const x = Math.round(parseFloat(v) * 10) / 10; return Number.isInteger(x) ? x + ".0" : String(x); }; // 1-decimal
 const ni = (v) => Math.round(parseFloat(v) || 0);
@@ -149,7 +149,7 @@ function buildDish(sel, dishes, macros, ingMap, ingNames, imgs) {
   const allergens = (m.allergens || "").split(/[;,]/).map((a) => a.trim().toLowerCase()).filter(Boolean);
   const allLabels = [...new Set(allergens.map((a) => ALLERGEN[a] || cap(a)))];
 
-  // FAQ — every answer factual, from real macros
+  // FAQ - every answer factual, from real macros
   const pct = ni(m.protein_pct_kcal);
   const faq = [
     [`How many calories are in ${name}?`,
@@ -322,7 +322,7 @@ ${nf.nav}
 
   <section class="nut-cta">
     <h2>Plan your week around ${esc(name)}</h2>
-    <p>Svas builds a weekly plan from 3,000+ regional dishes across 28 states, with the recipe, portions and macros, around your goal.</p>
+    <p>Svas builds a weekly plan from regional dishes across 28 states, with recipes, portions and macros, around your goal, and <b>SvasAI</b> can answer questions about any dish or log it from a photo.</p>
     <a class="btn btn-primary btn-lg" href="/waitlist.html">Join the waitlist</a>
   </section>
 
@@ -341,10 +341,7 @@ ${nf.nav}
     </div>
   </section>` : ""}
 
-  <p class="src-note">
-    Nutrition values are computed from <b>IFCT-2017</b> (Indian Food Composition Tables, National Institute of Nutrition) as the per-serving sum of each ingredient's per-100g value, and reviewed by dietitians. Figures are estimates for a standard home recipe and will vary with portion and preparation. Informational only, not medical or dietary advice.
-  </p>
-
+  <p class="src-note">Nutrition figures are estimates and informational only, not medical or dietary advice.</p>
 </main>
 
 ${nf.foot}
@@ -549,7 +546,7 @@ ${nf.nav}
 
   <section class="nut-cta">
     <h2>Plan your week around ${esc(state)} food</h2>
-    <p>Svas builds a weekly plan from 3,000+ regional dishes across 28 states, with the recipe, portions and macros, around your goal.</p>
+    <p>Svas builds a weekly plan from regional dishes across 28 states, with recipes, portions and macros, around your goal, and <b>SvasAI</b> can answer questions about any dish or log it from a photo.</p>
     <a class="btn btn-primary btn-lg" href="/waitlist.html">Join the waitlist</a>
   </section>
 

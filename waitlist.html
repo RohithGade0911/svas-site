@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Join the Svas waitlist — early access</title>
-<meta name="description" content="Your region is on the menu. Join the Svas waitlist and we'll let you know when Svas arrives — regional Indian foods, personalized weekly plans, built around what you already eat.">
+<title>Join the Svas waitlist · early access</title>
+<meta name="description" content="Your region is on the menu. Join the Svas waitlist and we'll let you know when Svas arrives: regional Indian foods, personal weekly plans, built around what you already eat.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.svas.life/waitlist.html">
 <link rel="alternate" hreflang="en-in" href="https://www.svas.life/waitlist.html">
@@ -14,7 +14,7 @@
 
 <!-- Open Graph / Facebook / WhatsApp -->
 <meta property="og:site_name" content="Svas">
-<meta property="og:title" content="Join the Svas waitlist — early access">
+<meta property="og:title" content="Join the Svas waitlist · early access">
 <meta property="og:description" content="Your region is on the menu. Join the Svas waitlist for regional Indian nutrition, personalized weekly plans, built around what you already eat.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.svas.life/waitlist.html">
@@ -23,14 +23,14 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Svas — the health app built around Indian food">
+<meta property="og:image:alt" content="Svas, the health app built around Indian food">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Join the Svas waitlist — early access">
+<meta name="twitter:title" content="Join the Svas waitlist · early access">
 <meta name="twitter:description" content="Your region is on the menu. Join the Svas waitlist for regional Indian nutrition, personalized weekly plans, built around what you already eat.">
 <meta name="twitter:image" content="https://www.svas.life/assets/og-image.png">
-<meta name="twitter:image:alt" content="Svas — the health app built around Indian food">
+<meta name="twitter:image:alt" content="Svas, the health app built around Indian food">
 
 <meta name="theme-color" content="#2D6A2F">
 <link rel="icon" type="image/png" href="assets/Favicon.png?v=2">
@@ -86,10 +86,10 @@
   <svg class="motif" style="width:120px;right:10%;bottom:2%;transform:rotate(-22deg)" viewBox="0 0 200 200" aria-hidden="true"><use href="#m-chilli"/></svg>
   <svg class="motif" style="width:140px;left:38%;top:-30px" viewBox="0 0 220 260" aria-hidden="true"><use href="#m-steam"/></svg>
 
-  <!-- LEFT — ambient food showcase (slower cadence than the homepage) -->
+  <!-- LEFT - ambient food showcase (slower cadence than the homepage) -->
   <aside class="wl-show land land-card" style="--ld:.35s" data-rotation data-interval="7000" data-imgw="720" aria-live="polite">
     <figure class="food-card wl-card-photo">
-      <img data-rot-img-a class="on" src="" alt="Pesarattu — Andhra Pradesh, 238 kcal per serving" loading="eager">
+      <img data-rot-img-a class="on" src="" alt="Pesarattu, Andhra Pradesh, 238 kcal per serving" loading="eager">
       <img data-rot-img-b src="" alt="" loading="eager">
     </figure>
     <div class="wl-show-meta">
@@ -103,12 +103,13 @@
     </div>
   </aside>
 
-  <!-- RIGHT — the invitation -->
+  <!-- RIGHT - the invitation -->
   <section class="wl-pane">
     <div id="wl-form-pane">
       <span class="eyebrow land" style="--ld:.05s">Early access</span>
       <h1 class="land" style="--ld:.12s">Your region is on the menu.</h1>
       <p class="lede land" style="--ld:.2s">Join the waitlist and we'll let you know when Svas arrives.</p>
+      <p class="land" style="--ld:.26s; font-size:15px; color:var(--muted); margin:10px 0 0; max-width:34ch;">Now with <b style="color:var(--green-dark)">SvasAI</b>, a nutritionist you can chat with in your own language.</p>
 
       <form class="wl-form land" style="--ld:.28s" id="wl-form" novalidate>
         <div class="wl-field">
@@ -125,7 +126,8 @@
 
       <ul class="wl-perks land" style="--ld:.38s">
         <li>Regional Indian foods</li>
-        <li>Personalized weekly plans</li>
+        <li>Personal weekly plans</li>
+        <li>SvasAI, in your language</li>
         <li>Built around what you already eat</li>
       </ul>
 
@@ -146,10 +148,10 @@
 
 <script>
 (function () {
-  // entrance safety net — never leave .land content hidden if hero.js fails
+  // entrance safety net - never leave .land content hidden if hero.js fails
   setTimeout(function () { document.body.classList.add("landed"); }, 10000);
   var SUPABASE_URL = "https://jtschfacrjsynryiyyyk.supabase.co";
-  var KEY = "sb_publishable_2uL2zVf_cpObToPtKODMZw_cH0c8TIe"; // publishable — safe in the client
+  var KEY = "sb_publishable_2uL2zVf_cpObToPtKODMZw_cH0c8TIe"; // publishable - safe in the client
   var form = document.getElementById("wl-form");
   var err = document.getElementById("wl-err");
   var btn = document.getElementById("wl-submit");
@@ -159,7 +161,7 @@
     if (already) {
       document.getElementById("wl-success-title").textContent = "You're already on the list.";
       document.getElementById("wl-success-body").textContent =
-        "We've got you — your invitation will land in this inbox as early access rolls out.";
+        "We've got you. Your invitation will land in this inbox as early access rolls out.";
     }
     document.getElementById("wl-success").classList.add("show");
   }
@@ -171,7 +173,7 @@
     var email = document.getElementById("wl-email").value.trim().toLowerCase();
     if (!name) { err.textContent = "Please tell us your name."; err.classList.add("show"); return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      err.textContent = "That email doesn't look right — mind checking it?"; err.classList.add("show"); return;
+      err.textContent = "That email doesn't look right. Mind checking it?"; err.classList.add("show"); return;
     }
     btn.disabled = true; btn.textContent = "Joining…";
     fetch(SUPABASE_URL + "/rest/v1/waitlist", {
@@ -188,7 +190,7 @@
       if (res.status === 409) return showSuccess(true);
       throw new Error("HTTP " + res.status);
     }).catch(function () {
-      err.textContent = "Something went wrong on our side — please try again in a moment.";
+      err.textContent = "Something went wrong on our side. Please try again in a moment.";
       err.classList.add("show");
       btn.disabled = false; btn.textContent = "Join Waitlist";
     });

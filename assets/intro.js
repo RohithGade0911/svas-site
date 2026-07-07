@@ -1,5 +1,5 @@
-// Svas Broth Reveal — landing intro (vanilla port of the owner's approved
-// motion piece, Logo/svas-animation/svas-reveal-16x9-white.html — the 1.5MB
+// Svas Broth Reveal - landing intro (vanilla port of the owner's approved
+// motion piece, Logo/svas-animation/svas-reveal-16x9-white.html - the 1.5MB
 // prototype bundle re-implemented in a few KB so the landing stays fast).
 // The curry-green disc settles in, the house-bowl mark draws itself, the
 // window squares pop, golden broth fills the bowl, steam rises, then the
@@ -24,7 +24,7 @@
       GOLD = "#E8A020", GOLD_LT = "#F2C25B", GOLD_DEEP = "#C9871A",
       RICE = "#FAFAF5", SPICE = "#3D2B1F";
 
-  // mark geometry (600×600, disc r288) — verbatim from svas-geometry.jsx
+  // mark geometry (600×600, disc r288) - verbatim from svas-geometry.jsx
   var ROOF = "M 206 245 L 300 138 L 394 245";
   var WALL = "M 225 224 L 225 322";
   var BOWL = "M 375 224 L 375 346 C 374 402 350 420 300 420 C 250 420 226 402 226 356 C 226 343 213 336 205 344 C 198 352 208 361 225 359 L 362 359";
@@ -177,7 +177,7 @@
 
     root.addEventListener("click", finish);
     requestAnimationFrame(frame);
-    // hard ceiling — the intro must never trap the page (throttled tabs etc.)
+    // hard ceiling - the intro must never trap the page (throttled tabs etc.)
     setTimeout(finish, (REVEAL_END / SPEED + HOLD) * 1000 + 1200);
   }
 

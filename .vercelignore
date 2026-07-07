@@ -1,4 +1,4 @@
-# Build-time tooling — must never be served to the public.
+# Build-time tooling - must never be served to the public.
 # build_rotation.js regenerates assets/rotation-data.js locally; the running
 # site only needs the generated output, not the script that produced it.
 scripts/
